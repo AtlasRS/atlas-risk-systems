@@ -1,5 +1,6 @@
 const express = require('express');
 const db = require('./database/db');
+const cors = require('cors');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
@@ -10,7 +11,10 @@ db.getClient();
 
 const app = express();
 
+app.use(cors());
+
 app.use(cookieSession({
+    // Cookie set to last for 30 days
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey]
   })
