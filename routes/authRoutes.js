@@ -10,13 +10,12 @@ module.exports = app => {
   app.get('/auth/google/callback', passport.authenticate('google'));
 
   app.get('/api/logout', (req, res) => {
-    console.log('api logout', req.user);
+    // logout is automatically attached to req object via passport
     req.logout();
     res.send(req.user);
   });
 
   app.get('/api/current_user', (req, res) => {
-    console.log('api current_user', req.user);
     res.send(req.user);
   })
 }
