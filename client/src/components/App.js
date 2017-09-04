@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-const Navbar = () => <h2>Navbar</h2>
+import Navbar from './Navbar';
 const Dashboard = () => <h2>Dashboard</h2>
 const AssetNew = () => <h2>AssetNew</h2>
 const Landing = () => <h2>Landing</h2>
