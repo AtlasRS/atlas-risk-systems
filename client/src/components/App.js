@@ -9,8 +9,10 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <Route exact={true} path='/' component={Landing} />
-        <Route path='/dashboard' component={Dashboard} />
+        <div>
+          <Route exact={true} path='/' component={Landing} />
+          <Route path='/dashboard' component={Dashboard} />
+        </div>
       </BrowserRouter>
     </div>
   );
