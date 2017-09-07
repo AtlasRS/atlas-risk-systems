@@ -1,5 +1,10 @@
-export default function(state = {}, action) {
+import { GET_USER } from '../actions/types';
+
+export default function(state = null, action) {
   switch (action.type) {
-    default: return state;
+    case GET_USER:
+      return action.payload || false;
+    default:
+      return state;
   }
 }
