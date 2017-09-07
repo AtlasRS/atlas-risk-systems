@@ -1,16 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
+  renderNavBar() {
+    switch (this.props.auth) {
+      case null:
+        return;
+      case false:
+        return (
+          <ul id='nav-list' className='right'>
+            <li><a href='/signup'>Sign Up</a></li>
+            <li><a href='/auth/google'>Log In</a></li>
+          </ul>
+        );
+      default:
+        return (
+          <ul id='nav-list' className='right'>
+            <li><a href='/api/logout'>Logout</a></li>
+          </ul>
+        );
+    }
+  }
+
   render() {
     return (
       <div className='component-container'>
         <nav id='nav-main'>
           <div className='nav-wrapper'>
-            <a href='#' className='brand-logo'>Atlas Risk Systems</a>
-            <ul id='nav-list' className='right'>
-              <li><a href='#'>Sign Up</a></li>
-              <li><a href='#'>Log In</a></li>
-            </ul>
+            <Link to={this.props.auth ? '/assets' : '/'} className='brand-logo'>
+              Atlas Risk Systems
+            </Link>
+            {this.renderNavBar()}
           </div>
         </nav>
       </div>
@@ -18,4 +39,7 @@ class Header extends Component {
   }
 }
 
-export default Header;
+function mapStateToProps(state) {
+  return { auth: state.auth };
+}
+export default connect(mapStateToProps)(Header);
