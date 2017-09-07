@@ -8,9 +8,9 @@ const Landing = () => <h2>Landing</h2>
 
 const App = () => {
   return (
-    <div>
+    <div id='main-container'>
       <BrowserRouter>
-        <div>
+        <div id='main-wrapper'>
           <Header />
           <Route exact path='/' component={Landing} />
           <Route exact path='/assets' component={Dashboard} />
