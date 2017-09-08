@@ -11,7 +11,7 @@ class Header extends Component {
         return (
           <ul id='nav-list' className='right'>
             <li><a href='/signup'>Sign Up</a></li>
-            <li><a href='/auth/google'>Log In</a></li>
+            <li><a href='/login'>Log In</a></li>
           </ul>
         );
       default:
