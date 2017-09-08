@@ -10,8 +10,8 @@ class Header extends Component {
       case false:
         return (
           <ul id='nav-list' className='right'>
-            <li><a href='/signup'>Sign Up</a></li>
-            <li><a href='/login'>Log In</a></li>
+            <li><a href='/auth/signup'>Sign Up</a></li>
+            <li><a href='/auth/login'>Log In</a></li>
           </ul>
         );
       default:
