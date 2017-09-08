@@ -1,17 +1,19 @@
 const express = require('express');
 const db = require('./database/db');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 require('./services/passport');
-const authRoutes = require('./routes/authRoutes');
 
 db.getClient();
 
 const app = express();
 
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(cookieSession({
     // Cookie set to last for 30 days
@@ -22,7 +24,7 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-authRoutes(app);
+require('./routes/authRoutes')(app);
 
 // How assets will be served in production
 if (process.env.NODE_ENV === 'production') {
