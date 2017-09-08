@@ -51,18 +51,21 @@ a {
 }
 
 // SIGNUP PAGE
-#signup-container {
+#authform-container {
   height: 100%;
   display: flex;
   justify-content: center;
-  #signup-form {
+  #authform-wrapper {
     width: 35%;
     height: 50%;
     box-shadow: 1px 1px 5px grey;
     margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    .authform {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
