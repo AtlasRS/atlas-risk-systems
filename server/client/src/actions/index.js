@@ -6,6 +6,9 @@ export const FETCH_ASSET = "fetch_asset";
 export const CREATE_ASSET = "create_asset";
 export const DELETE_ASSET = "delete_asset";
 
+const ROOT_URL = "http://reduxblog.herokuapp.com/api";
+const API_KEY = "?key=PAPERCLIP1234";
+
 export const getUser = () => async dispatch => {
   const res = await axios.get('/api/current_user')
 
