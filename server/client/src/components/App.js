@@ -8,8 +8,6 @@ import AssetNew from './AssetNew';
 import Landing from './Landing';
 import AuthForm from './AuthForm';
 const Dashboard = () => <h2>Dashboard</h2>
-//const AssetNew = () => <h2>AssetNew</h2>
-
 
 class App extends Component {
   componentDidMount() {
