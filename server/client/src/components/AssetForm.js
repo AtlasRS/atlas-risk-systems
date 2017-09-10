@@ -59,29 +59,30 @@ const renderField = ({
 const FieldLevelValidationForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
-    <form onSubmit={handleSubmit}>
-      <Field
-        name="asset_name"
-        type="text"
-        component={renderField}
-        label="Asset Name"
-        validate={[required]}
-        warn={alphaNumeric}/>
-      <Field
-        name="asset_desc"
-        type="text"
-        component={renderField}
-        label="Description"
-        warn={alphaNumeric}/>
-      <div>
-        <button type="submit" disabled={submitting}>
-          Submit
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
-        </button>
-      </div>
-    </form>
+    <div>
+      <h1>Add New Asset</h1>
+      <form onSubmit={handleSubmit}>
+        <Field
+          name="asset_name"
+          type="text"
+          component={renderField}
+          label="Asset Name"
+          validate={[required]}
+          warn={alphaNumeric}/>
+        <Field
+          name="asset_desc"
+          type="text"
+          component={renderField}
+          label="Description"
+          warn={alphaNumeric}/>
+        <div className='pull-right'>
+          <button type="submit" className='btn primary' disabled={submitting}>
+            Submit
+          </button>
+        </div>
+        <div className='clearfix' />
+      </form>
+    </div>
   )
 }
 

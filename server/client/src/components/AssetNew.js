@@ -1,5 +1,6 @@
 import React from 'react'
 import AssetForm from './AssetForm'
+import Subheader from './Subheader'
 
 class AssetNew extends React.Component {
   submit = (values) => {
@@ -8,7 +9,14 @@ class AssetNew extends React.Component {
   }
   render() {
     return (
-      <AssetForm onSubmit={this.submit} />
+      <div>
+        <Subheader />
+        <div className='container'>
+          <div className='card'>
+            <AssetForm onSubmit={this.submit} />
+          </div>
+        </div>
+      </div>
     )
   }
 }

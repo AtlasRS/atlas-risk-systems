@@ -15,12 +15,84 @@ body, #root, #main-container, #main-wrapper {
   font-family: avenir, sans-serif;
   font-size: 16px;
   color: #222;
+  background-color: #f6f8f8;
+  line-height: 1.6;
 }
 
-a {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 10px 0;
+}
+
+.container {
+  padding: 10px 15px;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.small {
+  font-size: 0.75em;
+}
+
+a,
+.btn {
   text-decoration: none;
   font-weight: 800;
   color: #222;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: 1px solid rgba(0,0,0,.3);
+  font-size: 1em;
+  font-family: inherit;
+
+
+  &.primary {
+    background-color: #222;
+    color: #fff;
+  }
+}
+
+.card {
+  border: 3px solid rgba(0,0,0,.1);
+  background-color: #fff;
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  margin-bottom: 20px;
+  font-size: 1em;
+  padding: 10px;
+  width: 100%;
+}
+
+.subheader {
+  background-color: #eee;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0,0,0,.1);
 }
 
 // MAIN NAVIGATION
@@ -29,9 +101,9 @@ a {
   .nav-wrapper {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgba(0,0,0,.1);
+    border-bottom: 2px solid rgba(0,0,0,.1);
+    background-color: #fff;
     .brand-logo {
-      width: 100%;
       padding: 15px;
     }
     #nav-list {
@@ -40,7 +112,8 @@ a {
       justify-content: flex-end;
       list-style: none;
       li {
-        padding-right: 15px;
+        padding: 0 20px;
+        font-size: 1.1em;
       }
     }
   }

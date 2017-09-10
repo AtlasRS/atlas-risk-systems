@@ -3,9 +3,15 @@ import React from 'react'
 class Assets extends React.Component {
   render() {
     return (
-      <div>
-        <h1>Assets</h1>
-        <a href="/assets/new">Add New Asset</a>
+      <div className='container'>
+        <div className='pull-left'>
+          <h1>Assets</h1>
+        </div>
+        <div className='pull-right'>
+          <a href='/assets/new' className='pull-right btn'>
+            Add New Asset
+          </a>
+        </div>
       </div>
     )
   }

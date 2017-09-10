@@ -9,7 +9,6 @@ import AssetNew from './AssetNew';
 import Landing from './Landing';
 import AuthForm from './AuthForm';
 
-
 class App extends Component {
   componentDidMount() {
     this.props.getUser();
