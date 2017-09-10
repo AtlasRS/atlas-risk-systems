@@ -1,11 +1,12 @@
 import React from 'react';
+import Ionicon from 'react-ionicons';
 
 const Subheader = () => {
   return (
     <div className='subheader'>
       <a href='/assets' className=''>
-        Back
-      </a>
+        My Assets
+      </a> / Add Asset
     </div>
   );
 }

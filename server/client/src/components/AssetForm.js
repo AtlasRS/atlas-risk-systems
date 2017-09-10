@@ -42,11 +42,11 @@ const renderField = ({
     <label>
       {label}
     </label>
-    <div>
-      <input {...input} placeholder={label} type={type} />
+    <div className='position-relative'>
+      <input {...input} className={touched && error ? 'error' : ''} placeholder={label} type={type} />
       {touched &&
         ((error &&
-          <span>
+          <span className='form-error'>
             {error}
           </span>) ||
           (warning &&
@@ -76,7 +76,7 @@ const FieldLevelValidationForm = props => {
           label="Description"
           warn={alphaNumeric}/>
         <div className='pull-right'>
-          <button type="submit" className='btn primary' disabled={submitting}>
+          <button type="submit" className='btn primary' disabled={pristine || submitting}>
             Submit
           </button>
         </div>

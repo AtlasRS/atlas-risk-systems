@@ -26,11 +26,14 @@ h4,
 h5,
 h6 {
   margin: 0 0 10px 0;
+  color: #359680;
 }
 
-.container {
-  padding: 10px 15px;
+.small {
+  font-size: 0.75em;
 }
+
+/* Floats and Positioning */
 
 .pull-left {
   float: left;
@@ -44,9 +47,11 @@ h6 {
   clear: both;
 }
 
-.small {
-  font-size: 0.75em;
+.position-relative {
+  position: relative;
 }
+
+/* Links and Buttons */
 
 a,
 .btn {
@@ -68,6 +73,19 @@ a,
   }
 }
 
+button {
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+/* Containers and Cards */
+
+.container {
+  padding: 10px 15px;
+}
+
 .card {
   border: 3px solid rgba(0,0,0,.1);
   background-color: #fff;
@@ -76,6 +94,8 @@ a,
   width: 100%;
   margin: auto;
 }
+
+/* Forms */
 
 label {
   font-weight: 600;
@@ -88,14 +108,19 @@ input {
   width: 100%;
 }
 
-.subheader {
-  background-color: #eee;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(0,0,0,.1);
+.error {
+  border: 1px solid #D0021B;
 }
 
-// MAIN NAVIGATION
+.form-error {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #D0021B;
+  font-weight: 800;
+}
+
+/* Navs */
 #nav-main {
   height: 100%;
   .nav-wrapper {
@@ -119,7 +144,14 @@ input {
   }
 }
 
-// LANDING PAGE
+.subheader {
+  background-color: #eee;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0,0,0,.1);
+}
+
+/* Landing Page */
 #landing-container {
   display: flex;
   flex-direction: column;
@@ -127,7 +159,7 @@ input {
   align-items: center;
 }
 
-// SIGNUP PAGE
+/* Sign Up Page */
 #authform-container {
   height: 100%;
   display: flex;
