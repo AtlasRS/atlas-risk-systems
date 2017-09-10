@@ -5,7 +5,7 @@ class Assets extends React.Component {
     return (
       <div className='container'>
         <div className='pull-left'>
-          <h1>Assets</h1>
+          <h1>My Assets</h1>
         </div>
         <div className='pull-right'>
           <a href='/assets/new' className='pull-right btn'>
