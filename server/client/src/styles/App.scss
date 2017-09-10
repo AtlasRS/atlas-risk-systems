@@ -17,6 +17,8 @@ body, #root, #main-container, #main-wrapper {
   color: #222;
   background-color: #f6f8f8;
   line-height: 1.6;
+  background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/satinweave.png);
+  background-repeat: repeat;
 }
 
 h1,
@@ -112,7 +114,7 @@ button {
 }
 
 .card {
-  border: 3px solid rgba(0,0,0,.1);
+  border: 1px solid rgba(0,0,0,.1);
   background-color: #fff;
   padding: 20px;
   max-width: 800px;
@@ -190,7 +192,7 @@ textarea {
 }
 
 .subheader {
-  background-color: #eee;
+  background-color: #fff;
   padding: 15px;
   border: 1px solid rgba(0,0,0,.1);
 }
