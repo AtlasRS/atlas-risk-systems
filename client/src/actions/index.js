@@ -54,4 +54,3 @@ export function deleteAsset(id, callback) {
     payload: id
   };
 }
-
