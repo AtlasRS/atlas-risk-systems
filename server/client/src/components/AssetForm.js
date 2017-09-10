@@ -34,7 +34,6 @@ export const phoneNumber = value =>
 
 const renderField = ({
   input,
-  textarea,
   label,
   type,
   meta: { touched, error, warning }
@@ -45,6 +44,30 @@ const renderField = ({
     </label>
     <div className='position-relative'>
       <input {...input} className={touched && error ? 'error' : ''} placeholder={label} type={type} />
+      {touched &&
+        ((error &&
+          <span className='form-error'>
+            {error}
+          </span>) ||
+          (warning &&
+            <span>
+              {warning}
+            </span>))}
+    </div>
+  </div>
+
+const renderTextarea = ({
+  input,
+  type,
+  label,
+  meta: { touched, error, warning }
+}) =>
+  <div>
+    <label>
+      {label}
+    </label>
+    <div className='position-relative'>
+      <textarea rows='5' {...input} className={touched && error ? 'error' : ''} placeholder={label} type={type} />
       {touched &&
         ((error &&
           <span className='form-error'>
@@ -72,10 +95,9 @@ const FieldLevelValidationForm = props => {
           warn={alphaNumeric}/>
         <Field
           name="asset_desc"
-          type="textarea"
-          component={renderField}
-          label="Description"
-          warn={alphaNumeric}/>
+          type="text"
+          component={renderTextarea}
+          label="Description"/>
         <div className='pull-right'>
           <button type="submit" className='btn primary' disabled={pristine || submitting}>
             Submit

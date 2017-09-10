@@ -87,6 +87,7 @@ a,
 }
 
 button {
+  cursor: pointer;
   &:disabled {
     opacity: 0.4;
     cursor: not-allowed;
@@ -131,6 +132,7 @@ label {
 
 input,
 textarea {
+  border: 3px solid rgba(0,0,0,.2);
   margin-bottom: 20px;
   font-size: 1em;
   padding: 10px;
@@ -138,7 +140,7 @@ textarea {
 }
 
 .error {
-  border: 1px solid #D0021B;
+  border: 3px solid #D0021B;
 }
 
 .form-error {
