@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header';
+import Assets from './Assets';
+import AssetNew from './AssetNew';
 import Landing from './Landing';
 import AuthForm from './AuthForm';
-const Dashboard = () => <h2>Dashboard</h2>
-const AssetNew = () => <h2>AssetNew</h2>
-
 
 class App extends Component {
   componentDidMount() {
@@ -17,12 +16,12 @@ class App extends Component {
 
   render() {
     return (
-      <div id='main-container'>
+      <div>
         <BrowserRouter>
-          <div id='main-wrapper'>
+          <div>
             <Header />
             <Route exact path='/' component={Landing} />
-            <Route exact path='/assets' component={Dashboard} />
+            <Route exact path='/assets' component={Assets} />
             <Route exact path='/assets/new' component={AssetNew} />
             <Route exact path='/auth/*' component={AuthForm} />
           </div>

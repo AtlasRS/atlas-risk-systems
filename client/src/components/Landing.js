@@ -4,7 +4,8 @@ const Landing = () => {
   return (
     <div id='landing-container'>
       <h1>Atlas Risk Systems</h1>
-      <p>A streamlined process for managing your assets!</p>
+      <h3>A streamlined process for managing your assets</h3>
+      <a href='/auth/signup' className='btn primary'>Sign Up</a>
     </div>
   )
 }
