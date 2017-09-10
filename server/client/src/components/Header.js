@@ -17,6 +17,7 @@ class Header extends Component {
       default:
         return (
           <ul id='nav-list' className='right'>
+            <li><a href='/assets'>My Assets</a></li>
             <li><a href='/api/logout'>Logout</a></li>
           </ul>
         );
