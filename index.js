@@ -1,18 +1,16 @@
 const express = require('express');
-const db = require('./database/db');
+const db = require('./server/database/db');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-const keys = require('./config/keys');
-require('./services/passport');
-
-db.getClient();
+const keys = require('./server/config/keys');
+require('./server/services/passport');
 
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(cookieSession({
@@ -24,7 +22,7 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./routes/authRoutes')(app);
+require('./server/routes/authRoutes')(app);
 
 // How assets will be served in production
 if (process.env.NODE_ENV === 'production') {
