@@ -8,9 +8,9 @@ const pool = new Pool({
   connectionTimeoutMillis: 2000,
 });
 
-// pool.on('error', function (err, client) {
-//   console.error('idle client error', err.message, err.stack);
-// });
+pool.on('error', function (err, client) {
+  console.error('idle client error', err.message, err.stack);
+});
 
 module.exports = {
   query: (text, params, callback) => {

@@ -31,6 +31,7 @@ passport.use(
       proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
+      console.log('PROFILE', profile);
       const values = [
         profile.id,
         profile.name.givenName,
