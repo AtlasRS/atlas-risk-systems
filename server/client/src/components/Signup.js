@@ -7,7 +7,7 @@ const Signup = () => {
       <h2>Sign Up</h2>
       <SocialLogins />
 
-      <p>Or Signup with Email</p>
+      <h4 className='m-t-1'>Or Signup with Email</h4>
       <input placeholder='First Name'></input>
       <input placeholder='Last Name'></input>
       <input placeholder='Email'></input>

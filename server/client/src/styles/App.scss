@@ -56,6 +56,10 @@ h6 {
   position: relative;
 }
 
+.m-t-1 {
+  margin-top: 1em;
+}
+
 .m-t-2 {
   margin-top: 2em;
 }
@@ -103,7 +107,7 @@ button {
 /* Containers and Cards */
 
 .container {
-  padding: 10px 15px;
+  padding: 15px;
 }
 
 .card {
@@ -118,10 +122,15 @@ button {
 /* Forms */
 
 label {
-  font-weight: 600;
+  font-weight: 800;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: .75em;
 }
 
-input {
+input,
+textarea {
   margin-bottom: 20px;
   font-size: 1em;
   padding: 10px;
@@ -138,6 +147,20 @@ input {
   right: 10px;
   color: #D0021B;
   font-weight: 800;
+}
+
+/* Placeholders */
+.placeholder {
+  padding: 40px 15px;
+  margin: auto;
+  text-align: center;
+  opacity: 0.4;
+
+  img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
 }
 
 /* Navs */

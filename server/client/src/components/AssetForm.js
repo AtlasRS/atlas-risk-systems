@@ -34,6 +34,7 @@ export const phoneNumber = value =>
 
 const renderField = ({
   input,
+  textarea,
   label,
   type,
   meta: { touched, error, warning }
@@ -71,7 +72,7 @@ const FieldLevelValidationForm = props => {
           warn={alphaNumeric}/>
         <Field
           name="asset_desc"
-          type="text"
+          type="textarea"
           component={renderField}
           label="Description"
           warn={alphaNumeric}/>
