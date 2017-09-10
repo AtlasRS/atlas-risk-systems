@@ -1,5 +1,4 @@
 import React from 'react';
-import Ionicon from 'react-ionicons';
 
 const Subheader = () => {
   return (

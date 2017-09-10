@@ -47,8 +47,17 @@ h6 {
   clear: both;
 }
 
+.center {
+  text-align: center;
+  margin: auto;
+}
+
 .position-relative {
   position: relative;
+}
+
+.m-t-2 {
+  margin-top: 2em;
 }
 
 /* Links and Buttons */
@@ -66,10 +75,10 @@ a,
   font-size: 1em;
   font-family: inherit;
 
-
   &.primary {
     background-color: #222;
     color: #fff;
+    border: 1px solid rgba(0,0,0,.1);
   }
 }
 
@@ -77,6 +86,17 @@ button {
   &:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+  }
+}
+
+.btn-group {
+  .btn {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .ion {
+    vertical-align: middle;
   }
 }
 
@@ -147,20 +167,38 @@ input {
 .subheader {
   background-color: #eee;
   padding: 15px;
-  margin-bottom: 20px;
   border: 1px solid rgba(0,0,0,.1);
 }
 
 /* Landing Page */
 #landing-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-image: url(http://www.senatesite.com/home/blog2/images/2015/02/Screen-Shot-2015-02-17-at-3.09.41-PM.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  text-align: center;
+  padding: 60px 5%;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+  h1 {
+    color: #fff;
+    font-size: 4em;
+    border-bottom: 1px solid rgba(255,255,255, .1);
+  }
+  h3 {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 50px;
+  }
+  .btn {
+    font-size: 1.5em;
+    padding: 10px 60px;
+    background-color: #359680;
+  }
 }
 
 /* Sign Up Page */
-#authform-container {
+/*#authform-container {
   height: 100%;
   display: flex;
   justify-content: center;
@@ -177,4 +215,4 @@ input {
       align-items: center;
     }
   }
-}
+}*/

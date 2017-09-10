@@ -9,14 +9,15 @@ import Login from './Login';
 class AuthForm extends Component {
   render() {
     return (
-      <div id='authform-container'>
-        <BrowserRouter>
-          <div id="authform-wrapper">
-            <h2>Atlas Risk Systems</h2>
-            <Route exact path='/auth/signup' component={Signup} />
-            <Route exact path='/auth/login' component={Login} />
-          </div>
-        </BrowserRouter>
+      <div className='container m-t-2'>
+        <div className='card' style={{maxWidth: '500px'}}>
+          <BrowserRouter>
+            <div>
+              <Route exact path='/auth/signup' component={Signup} />
+              <Route exact path='/auth/login' component={Login} />
+            </div>
+          </BrowserRouter>
+        </div>
       </div>
     );
   }

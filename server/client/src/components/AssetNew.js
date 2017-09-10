@@ -11,7 +11,7 @@ class AssetNew extends React.Component {
     return (
       <div>
         <Subheader />
-        <div className='container'>
+        <div className='container m-t-2'>
           <div className='card'>
             <AssetForm onSubmit={this.submit} />
           </div>
