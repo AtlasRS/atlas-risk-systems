@@ -23,13 +23,12 @@
     "cors": "^2.8.4",
     "express": "^4.15.4",
     "install": "^0.10.1",
+    "mongoose": "^4.11.11",
     "nodemon": "^1.11.0",
     "npm": "^5.4.1",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
-    "pg": "^7.2.0",
-    "react-ionicons": "^1.5.8",
-    "redux-form": "^7.0.4"
+    "react-ionicons": "^1.5.8"
   }
 }
