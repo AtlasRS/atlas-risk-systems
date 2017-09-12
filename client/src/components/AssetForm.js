@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
 
 const required = value => (value ? undefined : 'Required')
 const maxLength = max => value =>
