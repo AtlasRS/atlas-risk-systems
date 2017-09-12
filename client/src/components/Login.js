@@ -1,21 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import SocialLogins from './SocialLogins'
+import LoginForm from './form_components/LoginForm';
 
-const Login = () => {
-  return (
-    <div>
-      <h2>Login</h2>
-      <SocialLogins />
-
-      <p>Or Login with Email</p>
-      <input placeholder='Email'></input>
-      <input placeholder='Password'></input>
-      <div className='pull-right'>
-        <button className='btn primary'>Login</button>
+class Login extends Component {
+  render() {
+    return (
+      <div>
+        <h2>Login</h2>
+        <SocialLogins />
+        <p>Or Login with Email</p>
+        <LoginForm />
+        <div className='clearfix' />
       </div>
-      <div className='clearfix' />
-    </div>
-  );
+    );
+  }
 }
 
 export default Login;
