@@ -1,14 +1,18 @@
 const express = require('express');
-const db = require('./server/database/db');
+const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./server/config/keys');
+require('./server/models/User');
 require('./server/services/passport');
+
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 
+// Express middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
