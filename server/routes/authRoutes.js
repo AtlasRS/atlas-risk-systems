@@ -17,13 +17,27 @@ module.exports = app => {
   );
 
   // Local authentication
-  app.get('/auth/local',
-    passport.authenticate('local', {
-      successRedirect: '/assets',
-      failureRedirect: '/auth/login',
-      failureFlash: true
-    })
-  );
+  // app.get('/auth/local',
+  //   passport.authenticate('local', {
+  //     successRedirect: '/assets',
+  //     failureRedirect: '/auth/login',
+  //     failureFlash: true
+  //   })
+  // );
+
+  app.get('/auth/local', (req, res) => {
+    console.log("INSIDE GET REQUEST", req.body);
+    passport.authenticate('local', (err, user, info) => {
+      console.log("USESR INSIDE AUTH", user);
+      if (err) console.error('Error loggin in user', err)
+      if (!user) return res.redirect('auth/login');
+
+      req.login(user, err => {
+        if (err) console.error('Error loggin in user', err)
+        return res.redirect('/assets');
+      });
+    });
+  });
 
   app.get('/api/logout', (req, res) => {
     // logout is automatically attached to req object via passport
