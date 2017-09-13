@@ -70,5 +70,3 @@ LoginForm = reduxForm({
  form: 'loginForm'
 })(LoginForm);
 export default LoginForm;
-
-// export default reduxForm({ validate, form: 'loginForm' }, mapStateToProps, actions)(withRouter(LoginForm));
