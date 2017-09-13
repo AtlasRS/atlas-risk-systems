@@ -1,6 +1,16 @@
 const passport = require('passport');
+const Authentication = require('../controllers/authentication');
+const passportService = require('../routes/authRoutes');
 
 module.exports = app => {
+  app.get('/',
+    passport.authenticate('jwt', {
+      session: false
+    }),
+    (req, res) => {
+      res.send({ hi: 'there' });
+    }
+  );
   // Google authentication
   app.get('/auth/google',
     passport.authenticate('google', {
@@ -8,36 +18,21 @@ module.exports = app => {
     })
   );
   // Authorized redirect route specified in Google credentials
-  app.get(
-    '/auth/google/callback',
+  app.get('/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
       res.redirect('/assets'); // redirects back to the user's dashboard
     }
   );
 
-  // Local authentication
-  // app.get('/auth/local',
-  //   passport.authenticate('local', {
-  //     successRedirect: '/assets',
-  //     failureRedirect: '/auth/login',
-  //     failureFlash: true
-  //   })
-  // );
+  app.post('/api/login',
+    passport.authenticate('local', {
+      session: false
+    }),
+    Authentication.login
+  );
 
-  app.get('/auth/local', (req, res) => {
-    console.log("INSIDE GET REQUEST", req.body);
-    passport.authenticate('local', (err, user, info) => {
-      console.log("USESR INSIDE AUTH", user);
-      if (err) console.error('Error loggin in user', err)
-      if (!user) return res.redirect('auth/login');
-
-      req.login(user, err => {
-        if (err) console.error('Error loggin in user', err)
-        return res.redirect('/assets');
-      });
-    });
-  });
+  app.post('/api/signup', Authentication.signup);
 
   app.get('/api/logout', (req, res) => {
     // logout is automatically attached to req object via passport

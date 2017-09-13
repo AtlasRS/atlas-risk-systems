@@ -19,7 +19,7 @@ class Header extends Component {
         return (
           <ul id='nav-list' className='right'>
             <li><a href='/assets'>My Assets</a></li>
-            <li><a href='/api/logout'>Logout</a></li>
+            <li onClick={this.props.logoutUser}><a href='/api/logout'>Logout</a></li>
           </ul>
         );
     }

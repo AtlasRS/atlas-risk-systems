@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_USER, AUTH_LOCAL } from './types';
+import { GET_USER, AUTH_USER, AUTH_ERROR, UNAUTH_USER } from './types';
 
 // export const FETCH_ASSETS = "fetch_assets";
 // export const FETCH_ASSET = "fetch_asset";
@@ -11,47 +11,38 @@ export const getUser = () => async dispatch => {
   dispatch({ type: GET_USER, payload: res.data });
 };
 
-export const authLocal = () => async dispatch => {
-  const res = await axios.get('/auth/local');
-  dispatch({ type: AUTH_LOCAL, payload: res.data });
+export const signupUser = ({ first_name, last_name, email, password }, history) => dispatch => {
+  axios.post('/api/signup', { first_name, last_name, email, password })
+    .then(res => {
+      localStorage.setItem('token', res.data.token);
+      dispatch({ type: AUTH_USER, payload: res.data });
+      history.push('/assets');
+    })
+    .catch(() => {
+      dispatch
+    })
+}
+
+export const loginUser = ({ email, password }, history) => dispatch => {
+  console.log('INSIDE ACTION');
+  axios.post('/api/login', { email, password })
+    .then(res => {
+      console.log('promise', res);
+      localStorage.setItem('token', res.data.token);
+      dispatch({ type: AUTH_USER, payload: res.data });
+      history.push('/assets');
+    })
+    .catch(() => {
+      dispatch(authError('Invalid email or password'));
+    })
 };
 
-// export function fetchPosts() {
-//   const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
-//
-//   return {
-//     type: FETCH_ASSETS,
-//     payload: request
-//   };
-// }
-//
-// export function createAsset(values, callback) {
-//   const request = axios
-//     .post(`${ROOT_URL}/posts${API_KEY}`, values)
-//     .then(() => callback());
-//
-//   return {
-//     type: CREATE_ASSET,
-//     payload: request
-//   };
-// }
-//
-// export function fetchAsset(id) {
-//   const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
-//
-//   return {
-//     type: FETCH_ASSET,
-//     payload: request
-//   };
-// }
-//
-// export function deleteAsset(id, callback) {
-//   const request = axios
-//     .delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
-//     .then(() => callback());
-//
-//   return {
-//     type: DELETE_ASSET,
-//     payload: id
-//   };
-// }
+export const authError = error => {
+  return {type: AUTH_ERROR, payload: error };
+}
+
+export const logoutUser = () => {
+  console.log('LOGGING OUT USER');
+  localStorage.removeItem('token');
+  return { type: UNAUTH_USER }
+}

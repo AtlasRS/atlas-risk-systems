@@ -1,4 +1,4 @@
-// Login field contains logic for rendering single input
+// Fields component contains logic for rendering single input fields
 import React from 'react';
 
 const style = {
