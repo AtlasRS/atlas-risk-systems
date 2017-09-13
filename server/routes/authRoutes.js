@@ -2,7 +2,7 @@ const passport = require('passport');
 const Authentication = require('../controllers/authentication');
 const passportService = require('../routes/authRoutes');
 
-// Passport authentication strategies
+// Passport authentication strategies as helpers
 const requireAuth = passport.authenticate('jwt', { session: false });
 const googleAuth = passport.authenticate('google', { scope: ['profile', 'email' });
 const googleAuthCallback = passport.authenticate('google');
