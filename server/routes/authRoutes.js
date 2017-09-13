@@ -4,7 +4,7 @@ const passportService = require('../routes/authRoutes');
 
 // Passport authentication strategies as helpers
 const requireAuth = passport.authenticate('jwt', { session: false });
-const googleAuth = passport.authenticate('google', { scope: ['profile', 'email' });
+const googleAuth = passport.authenticate('google', { scope: ['profile', 'email'] });
 const googleAuthCallback = passport.authenticate('google');
 const loginAuth = passport.authenticate('local', { session: false });
 
