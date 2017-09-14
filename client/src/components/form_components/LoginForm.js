@@ -22,10 +22,10 @@ class LoginForm extends Component {
   }
 
   renderAlert() {
-    if(this.props.errorMsg) {
+    if(this.props.auth) {
       return (
         <div>
-          {this.props.errorMsg.error}
+          {this.props.auth.error}
         </div>
       )
     }
@@ -62,7 +62,7 @@ function validate(values) {
 }
 
 function mapStateToProps(state) {
-  return { errorMsg: state.auth }
+  return { auth: state.auth }
 }
 
 LoginForm = connect(mapStateToProps, actions)(withRouter(LoginForm));

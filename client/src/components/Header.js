@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import * as actions from '../actions';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.svg';
 
 class Header extends Component {
+  handleClick() {
+    this.props.logoutUser(this.props.history);
+  }
+
   renderNavBar() {
-    switch (this.props.auth) {
-      case null:
-        return;
-      case false:
-        return (
-          <ul id='nav-list' className='right'>
-            <li><a href='/auth/signup'>Sign Up</a></li>
-            <li><a href='/auth/login'>Log In</a></li>
-          </ul>
-        );
-      default:
-        return (
-          <ul id='nav-list' className='right'>
-            <li><a href='/assets'>My Assets</a></li>
-            <li onClick={this.props.logoutUser}><a href='/api/logout'>Logout</a></li>
-          </ul>
-        );
+    if (this.props.authenticated) {
+      return [
+        <li key={1}>
+          <Link to='/assets'>My Assets</Link>
+        </li>,
+        <li key={2}>
+          <Link to='/api/logout'>Logout</Link>
+        </li>
+      ];
+    } else {
+      return [
+        <li key={1}>
+          <Link to='/auth/signup'>Sign Up</Link>
+        </li>,
+        <li key={2}>
+          <Link to='/auth/login'>Log In</Link>
+        </li>
+      ];
     }
   }
 
@@ -33,7 +40,9 @@ class Header extends Component {
             <Link to={this.props.auth ? '/assets' : '/'}>
               <img src={logo} alt={"logo"} className='brand-logo'/>
             </Link>
-            {this.renderNavBar()}
+            <ul id='nav-list' className='right'>
+              {this.renderNavBar()}
+            </ul>
           </div>
         </nav>
       </div>
@@ -42,6 +51,6 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-  return { auth: state.auth };
+  return { authenticated: state.auth.authenticated };
 }
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, actions)(withRouter(Header));
