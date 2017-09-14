@@ -9,7 +9,6 @@ function tokenForUser(user) {
 }
 
 exports.login = (req, res, next) => {
-  console.log('inside login');
   res.send({ token: tokenForUser(req.user) });
 }
 

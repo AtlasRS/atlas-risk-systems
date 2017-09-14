@@ -68,13 +68,12 @@ const localOptions = {
   usernameField: 'email'
 }
 
-passport.use(new LocalStrategy(localOptions, (email, password, done) => {
-  User.findOne({ email: email }, (err, user) => {
+passport.use(new LocalStrategy(localOptions, function(email, password, done) {
+  User.findOne({ email: email }, function(err, user) {
     if (err) return done(err);
     if (!user) return done(null, false);
     // compare passwords - is 'password' equal to user.password
-    user.comparePassword(password, (err, isMatch) => {
-      console.log('#############YOU ARE HERE################');
+    user.comparePassword(password, function(err, isMatch) {
       if (err) return done(err);
       if (!isMatch) return done(null, false);
       return done(null, user);

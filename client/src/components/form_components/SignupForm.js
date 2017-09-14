@@ -54,7 +54,8 @@ function validate(values) {
 }
 
 
-export default reduxForm({
-  validate,
-  form: 'signupForm'
-}, null, actions)(withRouter(SignupForm));
+SignupForm = connect(null, actions)(SignupForm);
+SignupForm = reduxForm({
+ form: 'signupForm'
+})(SignupForm);
+export default SignupForm;

@@ -11,7 +11,7 @@ import AuthForm from './AuthForm';
 
 class App extends Component {
   componentDidMount() {
-    this.props.getUser();
+    this.props.authUser();
   };
 
   render() {

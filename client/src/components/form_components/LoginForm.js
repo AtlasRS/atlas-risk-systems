@@ -22,24 +22,24 @@ class LoginForm extends Component {
   }
 
   renderAlert() {
-    if(this.props.errorMsg) {
+    if(this.props.auth) {
       return (
         <div>
-          {this.props.errorMsg}
+          {this.props.auth.error}
         </div>
       )
     }
   }
 
-  handleFormSubmit({ email, password }, history) {
-    this.props.loginUser({ email, password }, history);
+  handleFormSubmit({ email, password }) {
+    this.props.loginUser({ email, password }, this.props.history);
   }
 
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(this.handleFormSubmit.bind(this))}>
-        {this.renderFields()}
         {this.renderAlert()}
+        {this.renderFields()}
         <div className='pull-right'>
           <button type='submit' className='btn primary'>Login</button>
         </div>
@@ -61,14 +61,12 @@ function validate(values) {
   return errors;
 }
 
-// function mapStateToProps(state) {
-//   return { errorMsg: state.auth.error }
-// }
+function mapStateToProps(state) {
+  return { auth: state.auth }
+}
 
-LoginForm = connect(null, actions)(LoginForm);
+LoginForm = connect(mapStateToProps, actions)(withRouter(LoginForm));
 LoginForm = reduxForm({
  form: 'loginForm'
 })(LoginForm);
 export default LoginForm;
-
-// export default reduxForm({ validate, form: 'loginForm' }, mapStateToProps, actions)(withRouter(LoginForm));
