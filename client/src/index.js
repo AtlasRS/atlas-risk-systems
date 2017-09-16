@@ -6,11 +6,15 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { AUTH_USER } from './actions/types';
 
 import App from './components/App';
 import reducers from './reducers';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk, logger));
+const token = localStorage.token;
+// If there is a token consider the user to be logged in.
+if (token) store.dispatch({ type: AUTH_USER });
 
 ReactDom.render(
   <BrowserRouter>
