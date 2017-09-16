@@ -5,7 +5,7 @@ const passportService = require('../routes/authRoutes');
 // Passport authentication strategies as helpers
 const requireAuth = passport.authenticate('jwt', { session: false });
 const googleAuth = passport.authenticate('google', { scope: ['profile', 'email'] });
-const googleAuthCallback = passport.authenticate('google');
+const googleAuthCallback = passport.authenticate('google', { failureRedirect: '/', session: false });
 const loginAuth = passport.authenticate('local', { session: false });
 
 module.exports = app => {
@@ -16,9 +16,7 @@ module.exports = app => {
   // #### Google authentication ####
   app.get('/auth/google', googleAuth);
   // Authorized redirect route specified in Google credentials
-  app.get('/auth/google/callback', googleAuthCallback, (req, res) => {
-    res.redirect('/assets'); // redirects back to the user's dashboard
-  });
+  app.get('/auth/google/callback', googleAuthCallback, Authentication.login);
 
   // #### Local Authntication ####
   app.post('/api/login', loginAuth, Authentication.login);
