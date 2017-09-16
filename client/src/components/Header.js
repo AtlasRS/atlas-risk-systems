@@ -17,7 +17,7 @@ class Header extends Component {
           <Link to='/assets'>My Assets</Link>
         </li>,
         <li key={2}>
-          <Link to='/api/logout'>Logout</Link>
+          <Link onClick={this.handleClick.bind(this)} to='/'>Logout</Link>
         </li>
       ];
     } else {
@@ -37,7 +37,7 @@ class Header extends Component {
       <div className='component-container'>
         <nav id='nav-main'>
           <div className='nav-wrapper'>
-            <Link to={this.props.auth ? '/assets' : '/'}>
+            <Link to={this.props.authenticated ? '/assets' : '/'}>
               <img src={logo} alt={"logo"} className='brand-logo'/>
             </Link>
             <ul id='nav-list' className='right'>

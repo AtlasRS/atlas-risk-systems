@@ -4,10 +4,11 @@ import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from './types';
 export const authUser = () => dispatch => {
   axios.get('/api/current_user')
     .then(res => {
-      dispatch({ type: AUTH_USER, payload: res.data });
+      if (res.data) dispatch({ type: AUTH_USER, payload: res.data });
+      else dispatch({ type: UNAUTH_USER, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: UNAUTH_USER, payload: err });
+      console.log('There is an error: ', err);
     })
 };
 
@@ -40,6 +41,13 @@ export const authError = error => {
 }
 
 export const logoutUser = (history) => dispatch => {
-    localStorage.removeItem('token');
-    dispatch({ type: UNAUTH_USER, payload: null });
+  axios.get('/api/logout')
+    .then(res => {
+      localStorage.removeItem('token');
+      dispatch({ type: UNAUTH_USER, payload: null });
+      history.push('/');
+    })
+    .catch(err => {
+      console.error('not happening');
+    })
 };
