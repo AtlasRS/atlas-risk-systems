@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import logo from '../images/logo.svg';
 
 class Header extends Component {
-  handleClick() {
+  handleLogout() {
     this.props.logoutUser(this.props.history);
   }
 
@@ -17,7 +17,7 @@ class Header extends Component {
           <Link to='/assets'>My Assets</Link>
         </li>,
         <li key={2}>
-          <Link onClick={this.handleClick.bind(this)} to='/'>Logout</Link>
+          <Link onClick={this.handleLogout.bind(this)} to='/'>Logout</Link>
         </li>
       ];
     } else {
