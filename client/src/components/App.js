@@ -13,10 +13,6 @@ import AuthForm from './AuthForm';
 import RequireAuth from './RequireAuth';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.authUser();
-  };
-
   render() {
     return (
       <div>
@@ -29,12 +25,6 @@ class App extends Component {
     );
   }
 };
-
-// App.propTypes = {
-//   location: PropTypes.shape({
-//     pathname: PropTypes.string.isRequired
-//   }).isRequired
-// }
 
 function mapStateToProps(state) {
   return { authenticated: state.auth.authenticated };
