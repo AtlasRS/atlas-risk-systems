@@ -53,7 +53,6 @@ function validate(values) {
   return errors;
 }
 
-
 SignupForm = connect(null, actions)(SignupForm);
 SignupForm = reduxForm({
  form: 'signupForm'
