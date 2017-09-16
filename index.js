@@ -12,19 +12,18 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
-// Express middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(cookieSession({
-    // Cookie set to last for 30 days
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey]
-  })
-);
+// app.use(cookieSession({
+//     // Cookie set to last for 30 days
+//     maxAge: 30 * 24 * 60 * 60 * 1000,
+//     keys: [keys.cookieKey]
+//   })
+// );
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 require('./server/routes/authRoutes')(app);
 
