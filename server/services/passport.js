@@ -14,7 +14,7 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-// Pulls token from cookie to determine what user
+// // Pulls token from cookie to determine what user
 passport.deserializeUser((id, done) => {
   User.findById(id).then(user => {
     done(null, user);
@@ -54,9 +54,7 @@ passport.use(new GoogleStrategy(googleOptions, async (accessToken, refreshToken,
       };
 
       const existingUser = await User.findOne({ googleId: profile.id })
-
       if (existingUser) return done(null, existingUser);
-
       const user = await User.create(newUser); // creates new model instance of User and saves
       done(null, user);
     }
