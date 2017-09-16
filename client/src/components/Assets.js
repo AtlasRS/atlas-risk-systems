@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import car from '../images/car.svg';
 
-class Assets extends React.Component {
+class Assets extends Component {
   render() {
     return (
       <div className='container'>
