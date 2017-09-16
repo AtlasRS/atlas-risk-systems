@@ -36,6 +36,7 @@ class LoginForm extends Component {
   }
 
   render() {
+    console.log("loginForm", this.props.auth.authenticated);
     return (
       <form onSubmit={this.props.handleSubmit(this.handleFormSubmit.bind(this))}>
         {this.renderAlert()}
