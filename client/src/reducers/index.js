@@ -6,7 +6,8 @@ import AssetsReducer from './AssetsReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  form: formReducer
+  form: formReducer,
+  assets: AssetsReducer,
 });
 
 export default rootReducer;

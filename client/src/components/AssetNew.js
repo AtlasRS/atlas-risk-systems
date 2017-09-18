@@ -1,24 +1,25 @@
-import React from 'react'
-import AssetForm from './AssetForm'
+import React from 'react';
 import Subheader from './Subheader'
+import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import AssetForm from './form_components/AssetForm';
 
 class AssetNew extends React.Component {
-  submit = (values) => {
-    // print the form values to the console
-    console.log(values)
-  }
+
   render() {
+
     return (
       <div>
         <Subheader />
         <div className='container m-t-2'>
           <div className='card'>
-            <AssetForm onSubmit={this.submit} />
+            <AssetForm />
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default AssetNew;
+export default connect(null, actions)(AssetNew);

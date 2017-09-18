@@ -13,6 +13,9 @@ class Header extends Component {
   renderNavBar() {
     if (this.props.authenticated) {
       return [
+        <li key={0}>
+          <Link to='/entities'>My Entities</Link>
+        </li>,
         <li key={1}>
           <Link to='/assets'>My Assets</Link>
         </li>,

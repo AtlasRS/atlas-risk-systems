@@ -43,6 +43,7 @@ class LoginForm extends Component {
         <div className='pull-right'>
           <button type='submit' className='btn primary'>Login</button>
         </div>
+        <div className='clearfix' />
       </form>
     );
   }

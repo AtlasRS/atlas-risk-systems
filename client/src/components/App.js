@@ -17,8 +17,8 @@ class App extends Component {
       <div>
         <Header />
         <Route exact path='/' component={Landing} />
-        <Route exact path='/assets' component={RequireAuth(Assets)} />
-        <Route exact path='/assets/new' component={RequireAuth(AssetNew)} />
+        <Route exact path='/assets' component={Assets} />
+        <Route exact path='/assets/new' component={AssetNew} />
         <Route exact path='/auth/*' component={AuthForm} />
       </div>
     );
