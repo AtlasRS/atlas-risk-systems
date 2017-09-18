@@ -10,8 +10,10 @@ import AssetNew from './AssetNew';
 import Entities from './Entities';
 import EntityNew from './EntitiesNew';
 import Landing from './Landing';
-import AuthForm from './AuthForm';
+import Signup from './Signup';
+import Login from './Login';
 import RequireAuth from './RequireAuth';
+
 
 class App extends Component {
   render() {
@@ -23,7 +25,8 @@ class App extends Component {
         <Route exact path='/assets/new' component={AssetNew} />
         <Route exact path='/entities' component={Entities} />
         <Route exact path='/entities/new' component={EntityNew} />
-        <Route exact path='/auth/*' component={AuthForm} />
+        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/login' component={Login} />
       </div>
     );
   }

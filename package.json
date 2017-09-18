@@ -30,6 +30,7 @@
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
     "passport-jwt": "^3.0.0",
+    "passport-linkedin": "^1.0.0",
     "passport-local": "^1.0.0",
     "react-ionicons": "^1.5.8"
   }

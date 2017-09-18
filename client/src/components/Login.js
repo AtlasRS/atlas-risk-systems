@@ -7,13 +7,18 @@ import LoginForm from './form_components/LoginForm';
 class Login extends Component {
   render() {
     return (
-      <div>
-        <h2>Login</h2>
-        <SocialLogins />
-        <p>Or Login with Email</p>
-        <LoginForm />
-        <div className='clearfix' />
+      <div className='container m-t-2'>
+        <div className='card' style={{maxWidth: '500px'}}>
+          <div>
+            <h2>Login</h2>
+            <SocialLogins />
+            <p>Or Login with Email</p>
+            <LoginForm />
+            <div className='clearfix' />
+          </div>
+        </div>
       </div>
+
     );
   }
 }

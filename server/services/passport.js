@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const LinkedInStrategy = require('passport-linkedin').Strategy;
 const LocalStrategy = require('passport-local').Strategy;
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
@@ -9,17 +10,18 @@ const keys = require('../config/keys');
 // User is the model Class used to create a new model instance
 const User = mongoose.model('users');
 
-// Generates token for identifying user, token stored with cookie
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-
+// // Generates token for identifying user, token stored with cookie
+// passport.serializeUser((user, done) => {
+//   done(null, user.id);
+// });
+//
 // // Pulls token from cookie to determine what user
-passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
-  });
-});
+// passport.deserializeUser((id, done) => {
+//   User.findById(id).then(user => {
+//     done(null, user);
+//   });
+// });
+
 // Setup options for JWT Strategy
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
@@ -45,7 +47,8 @@ const googleOptions = {
 }
 
 // Pass OAuth Client ID and Client Secret to GoogleStrategy
-passport.use(new GoogleStrategy(googleOptions, async (accessToken, refreshToken, profile, done) => {
+passport.use(new GoogleStrategy(googleOptions, (accessToken, refreshToken, profile, done) => {
+  console.log("HERE IN GOOGLE STRATEGY");
       const newUser = {
         googleId: profile.id,
         first_name: profile.name.givenName,
@@ -53,10 +56,40 @@ passport.use(new GoogleStrategy(googleOptions, async (accessToken, refreshToken,
         email: profile.emails[0].value
       };
 
-      const existingUser = await User.findOne({ googleId: profile.id })
-      if (existingUser) return done(null, existingUser);
-      const user = await User.create(newUser); // creates new model instance of User and saves
-      done(null, user);
+      User.findOne({ googleId: profile.id }, (err, existingUser) => {
+        if (existingUser) return done(null, existingUser);
+        User.create(newUser, (err, user) => { // creates new model instance of User and saves
+          return done(null, user);
+        });
+      })
+    }
+  )
+);
+
+// Setup options for LinkedIn Strategy
+const linkedInOptions = {
+  consumerKey: keys.linkedInClientID,
+  consumerSecret: keys.linkedInClientSecret,
+  callbackURL: '/auth/linkedin/callback',
+  proxy: true
+}
+
+// Pass OAuth Client ID and Client Secret to GoogleStrategy
+passport.use(new LinkedInStrategy(linkedInOptions, (token, tokenSecret, profile, done) => {
+      console.log("INSIDE LINKED IN STRATEGY");
+      const newUser = {
+        linkedinId: profile.id,
+        // first_name: profile.name.givenName,
+        // last_name: profile.name.familyName,
+        // email: profile.emails[0].value
+      };
+
+      User.findOne({ linkedinId: profile.id }, (err, existingUser) => {
+        if (existingUser) return done(null, existingUser);
+        User.create(newUser, (err, user) => { // creates new model instance of User and saves
+          return done(null, user);
+        });
+      })
     }
   )
 );
