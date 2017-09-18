@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import Fields from './Fields';
+import FieldsInput from './FieldsInput';
+import FieldsSelect from './FieldsSelect';
 import { withRouter } from 'react-router-dom';
 
 const FIELDS = [
@@ -27,8 +28,14 @@ const FIELDS = [
 
 class AssetForm extends Component {
   renderFields() {
-    return _.map(FIELDS, ({ label, type, name }) => {
-      return <Field key={name} component={Fields} label={label} type={type} name={name} />
+    return _.map(FIELDS, ({ component, label, type, name }) => {
+
+      if(component == 'input'){
+        return <Field key={name} component={FieldsInput} label={label} type={type} name={name} />
+      }
+      else {
+        return <Field key={name} component={FieldsSelect} label={label} type={type} name={name} />
+      }
     })
   }
 
