@@ -1,15 +1,8 @@
-// import _ from "lodash";
-// import { FETCH_ASSETS, FETCH_ASSET, DELETE_ASSET } from "../actions";
-//
-// export default function(state = {}, action) {
-//   switch (action.type) {
-//     case DELETE_ASSET:
-//       return _.omit(state, action.payload);
-//     case FETCH_ASSET:
-//       return { ...state, [action.payload.data.id]: action.payload.data };
-//     case FETCH_ASSETS:
-//       return _.mapKeys(action.payload.data, "id");
-//     default:
-//       return state;
-//   }
-// }
+export default function() {
+  return [
+    { entity: "Denver Basecamp", type: "Car Loan", make: "Ford", model: "Bronco", vin: 49281736102, expires: "Dec 21, 2017", insured: "true" },
+    { entity: "Ski Lodge", type: "Car Loan", make: "Ford", model: "Raptor", vin: 23451736102, expires: "Dec 31, 2017", insured: "true" },
+    { entity: "Eagle Tower", type: "Car Loan", make: "Ford", model: "Explorer", vin: 49282345236, expires: "Dec 1, 2017", insured: "true" },
+    { entity: "Denver Basecamp", type: "Car Loan", make: "Ford", model: "Excursion", vin: 9245235736102, expires: "Dec 13, 2017", insured: "true" }
+  ];
+}

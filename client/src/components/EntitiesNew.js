@@ -3,9 +3,9 @@ import Subheader from './Subheader'
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import AssetForm from './form_components/AssetForm';
+import EntityForm from './form_components/EntityForm';
 
-class AssetNew extends React.Component {
+class EntityNew extends React.Component {
 
   render() {
 
@@ -14,7 +14,7 @@ class AssetNew extends React.Component {
         <Subheader />
         <div className='container m-t-2'>
           <div className='card'>
-            <AssetForm />
+            <EntityForm />
           </div>
         </div>
       </div>
@@ -22,4 +22,4 @@ class AssetNew extends React.Component {
   }
 }
 
-export default connect(null, actions)(AssetNew);
+export default connect(null, actions)(EntityNew);
