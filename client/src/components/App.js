@@ -8,8 +8,10 @@ import Header from './Header';
 import Assets from './Assets';
 import AssetNew from './AssetNew';
 import Landing from './Landing';
-import AuthForm from './AuthForm';
+import Signup from './Signup';
+import Login from './Login';
 import RequireAuth from './RequireAuth';
+
 
 class App extends Component {
   render() {
@@ -19,7 +21,8 @@ class App extends Component {
         <Route exact path='/' component={Landing} />
         <Route exact path='/assets' component={RequireAuth(Assets)} />
         <Route exact path='/assets/new' component={RequireAuth(AssetNew)} />
-        <Route exact path='/auth/*' component={AuthForm} />
+        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/login' component={Login} />
       </div>
     );
   }
