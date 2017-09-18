@@ -23,10 +23,10 @@ class Header extends Component {
     } else {
       return [
         <li key={1}>
-          <Link to='/auth/signup'>Sign Up</Link>
+          <Link to='/signup'>Sign Up</Link>
         </li>,
         <li key={2}>
-          <Link to='/auth/login'>Log In</Link>
+          <Link to='/login'>Log In</Link>
         </li>
       ];
     }
