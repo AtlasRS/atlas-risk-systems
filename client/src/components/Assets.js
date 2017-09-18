@@ -60,7 +60,7 @@ class Assets extends Component {
         <div className='clearfix' />
 
         <div className="card card-block">
-          <table className="table table-striped">
+          <table className="table table-striped m-t-1">
             <thead>
               <tr>
                 <th>Location/Entity</th>

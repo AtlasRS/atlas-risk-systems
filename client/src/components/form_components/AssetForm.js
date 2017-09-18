@@ -7,21 +7,22 @@ import Fields from './Fields';
 import { withRouter } from 'react-router-dom';
 
 const FIELDS = [
-  { label: 'Type', type: 'text', name: 'asset_type_id' },
-  { label: 'Description', type: 'text', name: 'asset_description' },
-  { label: 'Street Address', type: 'text', name: 'address_1' },
-  { label: 'Address Continued', type: 'text', name: 'address_2' },
-  { label: 'City', type: 'text', name: 'city' },
-  { label: 'State', type: 'text', name: 'state' },
-  { label: 'Country', type: 'text', name: 'country' },
-  { label: 'Zip/Postal Code', type: 'text', name: 'postal_code' },
-  { label: 'Vehicle Type', type: 'text', name: 'vehicle_type' },
-  { label: 'VIN', type: 'text', name: 'vin_number' },
-  { label: 'Year', type: 'text', name: 'year' },
-  { label: 'Make', type: 'text', name: 'make' },
-  { label: 'Model', type: 'text', name: 'model' },
-  { label: 'Operating Radius', type: 'text', name: 'operating_radius' },
-  { label: 'Entity', type: 'text', name: 'entity_id' }
+  { component: 'select', label: 'Type', type: 'text', name: 'asset_type_id' },
+  { component: 'input', label: 'Description', type: 'text', name: 'asset_description' },
+  { component: 'input', label: 'Street Address', type: 'text', name: 'address_1' },
+  { component: 'input', label: 'Address Continued', type: 'text', name: 'address_2' },
+  { component: 'input', label: 'City', type: 'text', name: 'city' },
+  { component: 'input', label: 'State', type: 'text', name: 'state' },
+  { component: 'input', label: 'Zip/Postal Code', type: 'text', name: 'postal_code' },
+  { component: 'input', label: 'Country', type: 'text', name: 'country' },
+  
+  { component: 'input', label: 'Vehicle Type', type: 'text', name: 'vehicle_type' },
+  { component: 'input', label: 'VIN', type: 'text', name: 'vin_number' },
+  { component: 'input', label: 'Year', type: 'text', name: 'year' },
+  { component: 'input', label: 'Make', type: 'text', name: 'make' },
+  { component: 'input', label: 'Model', type: 'text', name: 'model' },
+  { component: 'input', label: 'Operating Radius', type: 'text', name: 'operating_radius' },
+  { component: 'input', label: 'Entity', type: 'text', name: 'entity_id' }
 ];
 
 class AssetForm extends Component {
