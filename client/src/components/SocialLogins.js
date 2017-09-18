@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Ionicon from 'react-ionicons';
@@ -8,17 +8,21 @@ import Ionicon from 'react-ionicons';
 class SocialLogins extends Component {
 
   handleGoogleAuth() {
-    this.props.googleAuth();
+    this.props.googleAuth(this.props.history);
+  }
+
+  handleLinkedInAuth() {
+    this.props.linkedInAuth(this.props.history)
   }
 
   render() {
     return (
       <div>
         <div className='btn-group'>
-          <div onClick={this.handleGoogleAuth.bind(this)} className='btn primary' style={{backgroundColor: '#E04827'}}>
+          <a onClick={this.handleGoogleAuth.bind(this)} className='btn primary' style={{backgroundColor: '#E04827'}}>
             <Ionicon icon="ion-social-google" color="white" className='ion'/> Login with Google
-          </div>
-          <a href='/auth/google' className='btn primary' style={{backgroundColor: '#267DE2'}}>
+          </a>
+          <a onClick={this.handleLinkedInAuth.bind(this)} className='btn primary' style={{backgroundColor: '#267DE2'}}>
             <Ionicon icon="ion-social-linkedin" color="white" className='ion'/> Login with LinkedIn
           </a>
         </div>
@@ -28,4 +32,4 @@ class SocialLogins extends Component {
   }
 }
 
-export default connect(null, actions)(SocialLogins);
+export default connect(null, actions)(withRouter(SocialLogins));
