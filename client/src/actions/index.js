@@ -1,30 +1,10 @@
 import axios from 'axios';
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from './types';
 
-export const googleAuth = (history) => dispatch => {
-  console.log('INSIDE');
-  axios.get('/auth/google')
-    .then(res => {
-      localStorage.setItem('token', res.data.token);
-      dispatch({ type: AUTH_USER, payload: res.data });
-      history.push('/assets');
-    })
-    .catch(err => {
-      console.log('There is an error: ', err);
-    })
-};
-
-export const linkedInAuth = (history) => dispatch => {
-  axios.get('/auth/linkedin')
-    .then(res => {
-      console.log(res.data.token);
-      localStorage.setItem('token', res.data.token);
-      dispatch({ type: AUTH_USER, payload: res.data });
-      history.push('/assets');
-    })
-    .catch(err => {
-      console.log('There is an error: ', err);
-    })
+export const socialAuth = (provider, history) => dispatch => {  
+  window.open(`/auth/${provider}`);
+  dispatch({ type: AUTH_USER });
+  // history.push('/assets');
 };
 
 export const signupUser = ({ first_name, last_name, email, password }, history) => dispatch => {
