@@ -6,26 +6,24 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./server/config/keys');
 require('./server/models/User');
+require('./server/models/Asset');
+require('./server/models/Entity');
 require('./server/services/passport');
 
 mongoose.connect(keys.mongoURI);
 
 const app = express();
 
+app.use(passport.initialize());
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// app.use(cookieSession({
-//     // Cookie set to last for 30 days
-//     maxAge: 30 * 24 * 60 * 60 * 1000,
-//     keys: [keys.cookieKey]
-//   })
-// );
-app.use(passport.initialize());
-// app.use(passport.session());
-
 require('./server/routes/authRoutes')(app);
+require('./server/routes/entityRoutes')(app);
+require('./server/routes/assetRoutes')(app);
+require('./server/routes/userRoutes')(app);
 
 // How assets will be served in production
 if (process.env.NODE_ENV === 'production') {
