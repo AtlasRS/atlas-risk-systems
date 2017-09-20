@@ -27,7 +27,7 @@ class Assets extends Component {
             {asset.insured}
           </td>
           <td>
-            <Ionicon icon="ion-chevron-right" color="#222" fontSize="10px" className='ion'/> 
+            <Ionicon icon="ion-chevron-right" color="#222" fontSize="10px" className='ion'/>
           </td>
         </tr>
       );
@@ -89,4 +89,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Assets);
-

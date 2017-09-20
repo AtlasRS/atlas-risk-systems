@@ -8,8 +8,8 @@ const userSchema = new Schema({
   first_name: String,
   last_name: String,
   email: { type: String, unique: true, lowercase: true },
-  password: String,
-  admin: { type: Boolean, default: false }
+  password: String
+  // sharedEntities: [{entity: "name", role: "role"}, {entity: "name", role: "role"}, {entity: "name", role: "role"}]
 });
 
 // On save hook, encrypt password
