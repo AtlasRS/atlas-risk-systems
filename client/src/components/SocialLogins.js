@@ -8,11 +8,11 @@ import Ionicon from 'react-ionicons';
 class SocialLogins extends Component {
 
   handleGoogleAuth() {
-    this.props.googleAuth(this.props.history);
+    this.props.socialAuth('google', this.props.history);
   }
 
   handleLinkedInAuth() {
-    this.props.linkedInAuth(this.props.history)
+    this.props.socialAuth('linkedin', this.props.history);
   }
 
   render() {

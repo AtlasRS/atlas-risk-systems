@@ -10,18 +10,6 @@ const keys = require('../config/keys');
 // User is the model Class used to create a new model instance
 const User = mongoose.model('users');
 
-// // Generates token for identifying user, token stored with cookie
-// passport.serializeUser((user, done) => {
-//   done(null, user.id);
-// });
-//
-// // Pulls token from cookie to determine what user
-// passport.deserializeUser((id, done) => {
-//   User.findById(id).then(user => {
-//     done(null, user);
-//   });
-// });
-
 // Setup options for JWT Strategy
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),

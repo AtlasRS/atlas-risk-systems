@@ -1,6 +1,5 @@
 const passport = require('passport');
-const Authentication = require('../controllers/authentication');
-const passportService = require('../routes/authRoutes');
+const AuthenticationCtrl = require('../controllers/authentication');
 
 // Passport authentication strategies as helpers
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -18,16 +17,16 @@ module.exports = app => {
   // #### Google authentication ####
   app.get('/auth/google', googleAuth);
   // Authorized redirect route specified in Google credentials
-  app.get('/auth/google/callback', googleAuthCallback, Authentication.login);
+  app.get('/auth/google/callback', googleAuthCallback, AuthenticationCtrl.login);
 
   // #### LinkedIn authentication ####
   app.get('/auth/linkedin', linkedInAuth);
   // Authorized redirect route specified in LinkedIn credentials
-  app.get('/auth/linkedin/callback', linkedInAuthCallback, Authentication.login);
+  app.get('/auth/linkedin/callback', linkedInAuthCallback, AuthenticationCtrl.login);
 
   // #### Local Authntication ####
-  app.post('/api/login', loginAuth, Authentication.login);
-  app.post('/api/signup', Authentication.signup);
+  app.post('/api/login', loginAuth, AuthenticationCtrl.login);
+  app.post('/api/signup', AuthenticationCtrl.signup);
 
   app.get('/api/logout', (req, res) => {
     req.logout(); // logout is automatically attached to req object via passport
