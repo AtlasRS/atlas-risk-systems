@@ -11,6 +11,11 @@ import { AUTH_USER } from './actions/types';
 import App from './components/App';
 import reducers from './reducers';
 
+window.authenticateCallback = token => {
+  console.log("TOKEN", token);
+  localStorage.setItem('token', token);
+};
+
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk, logger));
 const token = localStorage.token;
 // If there is a token consider the user to be logged in.
