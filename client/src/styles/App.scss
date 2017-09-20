@@ -280,12 +280,17 @@ label, th {
 }
 
 input,
-textarea {
+textarea,
+select {
   border: 3px solid rgba(0,0,0,.2);
   margin-bottom: 20px;
   font-size: 1em;
   padding: 10px;
   width: 100%;
+}
+
+select {
+  padding: 20px 10px;
 }
 
 .error {

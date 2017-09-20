@@ -1,5 +1,5 @@
 import React from 'react';
-import Subheader from './Subheader'
+import SubheaderEntity from './SubheaderEntity'
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -11,7 +11,7 @@ class EntityNew extends React.Component {
 
     return (
       <div>
-        <Subheader />
+        <SubheaderEntity />
         <div className='container m-t-2'>
           <div className='card'>
             <EntityForm />

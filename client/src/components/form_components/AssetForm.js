@@ -8,22 +8,20 @@ import FieldsSelect from './FieldsSelect';
 import { withRouter } from 'react-router-dom';
 
 const FIELDS = [
-  { component: 'select', label: 'Type', type: 'text', name: 'asset_type_id' },
+  { component: 'select', label: 'Entity', type: 'text', name: 'entity' },
   { component: 'input', label: 'Description', type: 'text', name: 'asset_description' },
   { component: 'input', label: 'Street Address', type: 'text', name: 'address_1' },
   { component: 'input', label: 'Address Continued', type: 'text', name: 'address_2' },
-  { component: 'input', label: 'City', type: 'text', name: 'city' },
-  { component: 'input', label: 'State', type: 'text', name: 'state' },
+  { component: 'select', label: 'City', type: 'text', name: 'city' },
+  { component: 'select', label: 'State', type: 'text', name: 'state' },
   { component: 'input', label: 'Zip/Postal Code', type: 'text', name: 'postal_code' },
-  { component: 'input', label: 'Country', type: 'text', name: 'country' },
-  
-  { component: 'input', label: 'Vehicle Type', type: 'text', name: 'vehicle_type' },
+/*  { component: 'select', label: 'Country', type: 'text', name: 'country' },*/
+  { component: 'select', label: 'Vehicle Type', type: 'text', name: 'vehicle_type' },
   { component: 'input', label: 'VIN', type: 'text', name: 'vin_number' },
-  { component: 'input', label: 'Year', type: 'text', name: 'year' },
-  { component: 'input', label: 'Make', type: 'text', name: 'make' },
+  { component: 'select', label: 'Year', type: 'text', name: 'year' },
+  { component: 'select', label: 'Make', type: 'text', name: 'make' },
   { component: 'input', label: 'Model', type: 'text', name: 'model' },
-  { component: 'input', label: 'Operating Radius', type: 'text', name: 'operating_radius' },
-  { component: 'input', label: 'Entity', type: 'text', name: 'entity_id' }
+  { component: 'select', label: 'Operating Radius (Miles)', type: 'text', name: 'operating_radius' },
 ];
 
 class AssetForm extends Component {

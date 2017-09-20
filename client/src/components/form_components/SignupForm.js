@@ -55,6 +55,7 @@ function validate(values) {
 
 SignupForm = connect(null, actions)(SignupForm);
 SignupForm = reduxForm({
- form: 'signupForm'
+ form: 'signupForm',
+ validate
 })(SignupForm);
 export default SignupForm;

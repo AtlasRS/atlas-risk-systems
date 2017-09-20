@@ -11,6 +11,7 @@ export default ({ input, label, select, meta: { error, touched } }) => { // { in
       <div style={style}>
         {touched && error}
       </div>
+      <label>{label}</label>
       <input {...input} placeholder={label} />
     </div>
   );

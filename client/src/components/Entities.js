@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import car from '../images/car.svg';
+import entity from '../images/entity.svg';
 import Ionicon from 'react-ionicons';
 
 class Entities extends Component {
@@ -11,6 +11,12 @@ class Entities extends Component {
           <td>
             {entity.name}
           </td>
+          <td>
+            {entity.city}, {entity.state}
+          </td>
+          <td>
+            <Ionicon icon="ion-chevron-right" color="#222" fontSize="10px" className='ion'/>
+          </td>
         </tr>
       );
     });
@@ -20,7 +26,7 @@ class Entities extends Component {
     if (this.props.entities == '') {
       return (
         <div className='placeholder'>
-          <img src={car} alt={"car"} className='placeholder-image'/>
+          <img src={entity} alt={"entity"} className='placeholder-image'/>
           <div className="m-t-2">
             <a href='/entities/new' className='btn primary'>
               Add Your First Entity
@@ -45,7 +51,9 @@ class Entities extends Component {
           <table className="table table-striped m-t-1">
             <thead>
               <tr>
-                <th>Name</th>
+                <th style={{width: '25%'}}>Name</th>
+                <th>Location</th>
+                <th style={{width: '20px'}}></th>
               </tr>
             </thead>
             <tbody>

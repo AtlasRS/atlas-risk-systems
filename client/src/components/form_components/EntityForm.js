@@ -9,6 +9,12 @@ import { withRouter } from 'react-router-dom';
 
 const FIELDS = [
   { component: 'input', label: 'Name', type: 'text', name: 'entity_name' },
+  { component: 'input', label: 'Street Address', type: 'text', name: 'address_1' },
+  { component: 'input', label: 'Address Continued', type: 'text', name: 'address_2' },
+  { component: 'select', label: 'City', type: 'text', name: 'city' },
+  { component: 'select', label: 'State', type: 'text', name: 'state' },
+  { component: 'input', label: 'Zip/Postal Code', type: 'text', name: 'postal_code' },
+  /*{ component: 'select', label: 'Country', type: 'text', name: 'country' }*/
 ];
 
 class EntityForm extends Component {
