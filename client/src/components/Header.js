@@ -40,7 +40,7 @@ class Header extends Component {
       <div className='component-container'>
         <nav id='nav-main'>
           <div className='nav-wrapper'>
-            <Link to={this.props.authenticated ? '/assets' : '/'}>
+            <Link to={this.props.authenticated ? '/entities' : '/'}>
               <img src={logo} alt={"logo"} className='brand-logo'/>
             </Link>
             <ul id='nav-list' className='right'>
