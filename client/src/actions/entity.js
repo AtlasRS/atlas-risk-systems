@@ -28,14 +28,12 @@ export const getEntities = (id, history) => dispatch => {
 
 export const postEntity = (values, id, history) => dispatch => {
   values._user = id;
-  console.log('IS IT ON THERE', values);
-  const data = JSON.stringify(values);
-  axios.post('/api/entity', data)
+  axios.post('/api/entity', values, { 'headers': { 'authorization': token } })
     .then(res => {
       dispatch({ type: POST_ENTITY, payload: res.data });
       history.push('/entities');
     })
     .catch(err => {
-      console.error('not happening');
+      console.error('not happening', err);
     })
 };

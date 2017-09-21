@@ -71,7 +71,6 @@ class Entities extends Component {
 function mapStateToProps(state) {
   console.log("ENTITIES STATE", state);
   return {
-    userID: state.auth.user._id,
     entities: state.entities.entities
   };
 }
