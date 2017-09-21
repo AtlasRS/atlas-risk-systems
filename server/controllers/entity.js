@@ -20,6 +20,7 @@ exports.getEntities = (req, res, next) => {
 
 // post an entity to the entities collection
 exports.postEntity = (req, res, next) => {
+  console.log("INSIDE POST ENTITY", req.body);
   Entity.findOne({ legal_name: req.body.legal_name }, (err, existingEntity) => {
     if (err) return next(err);
     if (existingEntity) return res.status(422).send({ error: 'Entity already exists' });

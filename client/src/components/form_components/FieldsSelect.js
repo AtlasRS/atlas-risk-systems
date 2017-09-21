@@ -24,11 +24,11 @@ const Radius = [50,100,150,200,500,1000,2000,"Unlimited"]
 
 let selectOptions;
 
-export default ({ select, label, name }) => { // { input } analgous to props.input (contains all the callback functions)
+export default ({ select, label, name, meta: { error, touched } }) => { // { input } analgous to props.input (contains all the callback functions)
   if(label === 'Entity') {
     selectOptions = Entity
   };
-  
+
   if(label === 'Country') {
     selectOptions = Country
   };
@@ -57,8 +57,8 @@ export default ({ select, label, name }) => { // { input } analgous to props.inp
     selectOptions = Year
   };
 
-  let optionValues = 
-    selectOptions.map(selectOption => 
+  let optionValues =
+    selectOptions.map(selectOption =>
       {
         return (
           <option value={selectOption} key={selectOption}>
@@ -71,7 +71,7 @@ export default ({ select, label, name }) => { // { input } analgous to props.inp
   return (
     <div>
       <label>{label}</label>
-      <select name={name} component='select'>
+      <select {...select} name={name}>
         <option value=''>Select {label}...</option>
         {optionValues}
       </select>

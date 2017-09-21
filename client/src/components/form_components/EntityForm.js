@@ -22,7 +22,7 @@ class EntityForm extends Component {
   renderFields() {
     return _.map(FIELDS, ({ component, label, type, name }) => {
 
-      if(component == 'input'){
+      if(component === 'input'){
         return <Field key={name} component={FieldsInput} label={label} type={type} name={name} />
       }
       else {
@@ -31,8 +31,8 @@ class EntityForm extends Component {
     })
   }
 
-  handleFormSubmit = (values, history) => {
-    this.props.postEntity(values, this.props.userID, history);
+  handleFormSubmit = (values) => {
+    this.props.postEntity(values, "59b974ee956b5d9bfa454c11", this.props.history);
   }
 
   render() {
@@ -49,14 +49,14 @@ class EntityForm extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  console.log("FORM STATE", state);
-  return {
-    userID: state.auth.user._id
-  };
-}
+// function mapStateToProps(state) {
+//   console.log("FORM STATE", state);
+//   return {
+//     userID: state.auth.user._id
+//   };
+// }
 
-EntityForm = connect(mapStateToProps, actions)(EntityForm);
+EntityForm = connect(null, actions)(withRouter(EntityForm));
 EntityForm = reduxForm({
  form: 'entityForm'
 })(EntityForm);

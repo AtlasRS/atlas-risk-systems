@@ -5,7 +5,7 @@ const style = {
   color: 'red',
 };
 
-export default ({ input, label, select, meta: { error, touched } }) => { // { input } analgous to props.input (contains all the callback functions)
+export default ({ input, label, meta: { error, touched } }) => { // { input } analgous to props.input (contains all the callback functions)
   return (
     <div>
       <div style={style}>
