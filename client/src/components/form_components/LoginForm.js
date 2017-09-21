@@ -38,7 +38,7 @@ class LoginForm extends Component {
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(this.handleFormSubmit.bind(this))}>
-        {this.renderAlert()}
+        {/* {this.renderAlert()} */}
         {this.renderFields()}
         <div className='pull-right'>
           <button type='submit' className='btn primary'>Login</button>

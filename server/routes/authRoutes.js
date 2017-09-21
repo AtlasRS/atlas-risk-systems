@@ -1,5 +1,6 @@
 const passport = require('passport');
 const AuthenticationCtrl = require('../controllers/authentication');
+const EntityCtrl = require('../controllers/entity');
 
 // Passport authentication strategies as helpers
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -10,10 +11,6 @@ const linkedInAuthCallback = passport.authenticate('linkedin', { session: false 
 const loginAuth = passport.authenticate('local', { session: false });
 
 module.exports = app => {
-  app.get('/', requireAuth, (req, res) => {
-    res.send({ hi: 'there' });
-  });
-
   // #### Google authentication ####
   app.get('/auth/google', googleAuth);
   // Authorized redirect route specified in Google credentials
@@ -23,9 +20,13 @@ module.exports = app => {
   app.get('/auth/linkedin', linkedInAuth);
   // Authorized redirect route specified in LinkedIn credentials
   app.get('/auth/linkedin/callback', linkedInAuthCallback, AuthenticationCtrl.login);
+  // Get user
+  app.get('/api/user', requireAuth, (req, res) => {
+    res.send(req.user);
+  });
 
   // #### Local Authntication ####
-  app.post('/api/login', loginAuth, AuthenticationCtrl.login);
+  app.post('/api/login', loginAuth, EntityCtrl.getEntities, AuthenticationCtrl.login);
   app.post('/api/signup', AuthenticationCtrl.signup);
 
   app.get('/api/logout', (req, res) => {

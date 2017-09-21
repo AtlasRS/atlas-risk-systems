@@ -11,9 +11,10 @@ exports.getEntity = (req, res, next) => {
 
 // get all entities from entitiy collection via user id that is ref on entity model
 exports.getEntities = (req, res, next) => {
-  Entity.find({ _user: { $in: [req.params.id] } }, (err, entities) =>  {
+  Entity.find({ _user: { $in: [req.user._id] } }, (err, entities) =>  {
     if (err) return res.status(404).send({ error: err });
-    res.status(200).json(entities);
+    req.entities = entities;
+    next();
   });
 }
 

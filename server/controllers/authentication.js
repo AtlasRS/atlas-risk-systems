@@ -9,7 +9,7 @@ function tokenForUser(user) {
 }
 
 exports.login = (req, res, next) => {
-  res.send({ token: tokenForUser(req.user) });
+  res.send({ user: req.user, token: tokenForUser(req.user), entities: req.entities });
   // res.render('authenticated.html', { token: tokenForUser(req.user) });
   // res.redirect(`/assets?token=${tokenForUser(req.user)}`);
 }
