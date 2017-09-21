@@ -2,19 +2,20 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import * as actions from '../../actions/entity';
 import FieldsInput from './FieldsInput';
 import FieldsSelect from './FieldsSelect';
 import { withRouter } from 'react-router-dom';
 
 const FIELDS = [
-  { component: 'input', label: 'Name', type: 'text', name: 'entity_name' },
+  { component: 'input', label: 'Legal Name', type: 'text', name: 'legal_name' },
+  { component: 'input', label: 'DBA', type: 'text', name: 'do_business_as' },
   { component: 'input', label: 'Street Address', type: 'text', name: 'address_1' },
   { component: 'input', label: 'Address Continued', type: 'text', name: 'address_2' },
   { component: 'select', label: 'City', type: 'text', name: 'city' },
   { component: 'select', label: 'State', type: 'text', name: 'state' },
   { component: 'input', label: 'Zip/Postal Code', type: 'text', name: 'postal_code' },
-  /*{ component: 'select', label: 'Country', type: 'text', name: 'country' }*/
+  { component: 'select', label: 'Country', type: 'text', name: 'country' }
 ];
 
 class EntityForm extends Component {
@@ -30,13 +31,13 @@ class EntityForm extends Component {
     })
   }
 
-  handleFormSubmit({ first_name, last_name, email, password }, history) {
-    this.props.signupUser({ first_name, last_name, email, password }, history);
+  handleFormSubmit = (values, history) => {
+    this.props.postEntity(values, this.props.userID, history);
   }
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(this.handleFormSubmit.bind(this))}>
+      <form onSubmit={this.props.handleSubmit(this.handleFormSubmit)}>
         <h1>Add Entity</h1>
         {this.renderFields()}
         <div className='pull-right'>
@@ -48,7 +49,14 @@ class EntityForm extends Component {
   }
 }
 
-EntityForm = connect(null, actions)(EntityForm);
+function mapStateToProps(state) {
+  console.log("FORM STATE", state);
+  return {
+    userID: state.auth.user._id
+  };
+}
+
+EntityForm = connect(mapStateToProps, actions)(EntityForm);
 EntityForm = reduxForm({
  form: 'entityForm'
 })(EntityForm);

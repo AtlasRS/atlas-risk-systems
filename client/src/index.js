@@ -11,10 +11,10 @@ import { AUTH_USER } from './actions/types';
 import App from './components/App';
 import reducers from './reducers';
 
-window.authenticateCallback = token => {
-  console.log("TOKEN", token);
-  localStorage.setItem('token', token);
-};
+// window.authenticateCallback = token => {
+//   console.log("TOKEN", token);
+//   localStorage.setItem('token', token);
+// };
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk, logger));
 const token = localStorage.token;
