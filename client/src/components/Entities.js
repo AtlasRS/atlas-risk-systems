@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Link, withRouter } from 'react-router-dom';
+import * as actions from '../actions/entity';
 import entity from '../images/entity.svg';
 import Ionicon from 'react-ionicons';
 
@@ -7,9 +9,9 @@ class Entities extends Component {
   renderEntityList() {
     return this.props.entities.map(entity => {
       return (
-        <tr key={entity.name}>
+        <tr key={entity.legal_name}>
           <td>
-            {entity.name}
+            {entity.legal_name}
           </td>
           <td>
             {entity.city}, {entity.state}
@@ -23,7 +25,7 @@ class Entities extends Component {
   }
 
   render() {
-    if (this.props.entities == '') {
+    if (this.props.entities === '') {
       return (
         <div className='placeholder'>
           <img src={entity} alt={"entity"} className='placeholder-image'/>
@@ -41,9 +43,9 @@ class Entities extends Component {
           <h1>My Entities</h1>
         </div>
         <div className='pull-right'>
-          <a href='/entities/new' className='pull-right btn primary'>
+          <Link to='/entities/new' className='pull-right btn primary'>
             Add New Entity
-          </a>
+          </Link>
         </div>
         <div className='clearfix' />
 
@@ -51,7 +53,7 @@ class Entities extends Component {
           <table className="table table-striped m-t-1">
             <thead>
               <tr>
-                <th style={{width: '25%'}}>Name</th>
+                <th style={{width: '25%'}}>Legal Name</th>
                 <th>Location</th>
                 <th style={{width: '20px'}}></th>
               </tr>
@@ -67,10 +69,11 @@ class Entities extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log("ENTITIES STATE", state);
   return {
-    entities: state.entities
+    userID: state.auth.user._id,
+    entities: state.entities.entities
   };
 }
 
-export default connect(mapStateToProps)(Entities);
-
+export default connect(mapStateToProps, actions)(withRouter(Entities));

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../actions';
@@ -14,8 +14,11 @@ import Signup from './Signup';
 import Login from './Login';
 import RequireAuth from './RequireAuth';
 
-
 class App extends Component {
+  componentDidMount() {
+    this.props.getUser();
+  }
+
   render() {
     return (
       <div>
@@ -33,6 +36,7 @@ class App extends Component {
 };
 
 function mapStateToProps(state) {
+  console.log("APP STATE", state);
   return { authenticated: state.auth.authenticated };
 }
 
