@@ -6,7 +6,7 @@ const Landing = () => {
     <div id='landing-container'>
       <h1>Atlas Risk Systems</h1>
       <h3>A streamlined process for managing your assets</h3>
-      <Link to='/auth/signup' className='btn primary'>Sign Up</Link>
+      <Link to='/signup' className='btn primary'>Sign Up</Link>
     </div>
   )
 }

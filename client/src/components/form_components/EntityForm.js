@@ -32,7 +32,7 @@ class EntityForm extends Component {
   }
 
   handleFormSubmit = (values) => {
-    this.props.postEntity(values, "59b974ee956b5d9bfa454c11", this.props.history);
+    this.props.postEntity(values, this.props.userID, this.props.history);
   }
 
   render() {
@@ -49,12 +49,9 @@ class EntityForm extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   console.log("FORM STATE", state);
-//   return {
-//     userID: state.auth.user._id
-//   };
-// }
+function mapStateToProps(state) {
+  return { userID: state.auth.user._id };
+}
 
 EntityForm = connect(null, actions)(withRouter(EntityForm));
 EntityForm = reduxForm({

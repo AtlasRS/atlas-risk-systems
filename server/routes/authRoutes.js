@@ -21,8 +21,8 @@ module.exports = app => {
   // Authorized redirect route specified in LinkedIn credentials
   app.get('/auth/linkedin/callback', linkedInAuthCallback, AuthenticationCtrl.login);
   // Get user
-  app.get('/api/user', requireAuth, (req, res) => {
-    res.send(req.user);
+  app.get('/api/user', requireAuth, EntityCtrl.getEntities, (req, res) => {
+    res.send({ user: req.user, entities: req.entities });
   });
 
   // #### Local Authntication ####

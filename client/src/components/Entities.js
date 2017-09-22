@@ -5,6 +5,7 @@ import * as actions from '../actions/entity';
 import entity from '../images/entity.svg';
 import Ionicon from 'react-ionicons';
 
+
 class Entities extends Component {
   renderEntityList() {
     return this.props.entities.map(entity => {
@@ -69,10 +70,7 @@ class Entities extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("ENTITIES STATE", state);
-  return {
-    entities: state.entities.entities
-  };
+  return { entities: state.entities.entities };
 }
 
 export default connect(mapStateToProps, actions)(withRouter(Entities));
