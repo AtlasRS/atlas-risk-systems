@@ -5,3 +5,4 @@ export const AUTH_ERROR = 'auth-error';
 export const GET_ENTITY = 'get-entity';
 export const GET_ENTITIES = 'get-entities';
 export const POST_ENTITY = 'post-entity';
+export const LOGOUT_ENTITIES = 'logout-entities';

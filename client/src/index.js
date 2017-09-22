@@ -3,28 +3,19 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import reduxThunk from 'redux-thunk';
-import logger from 'redux-logger';
+import App from './components/App';
+import configureStore from './configureStore';
 import { AUTH_USER } from './actions/types';
 
-import App from './components/App';
-import reducers from './reducers';
+const store = configureStore();
 
-// window.authenticateCallback = token => {
-//   console.log("TOKEN", token);
-//   localStorage.setItem('token', token);
-// };
-
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk, logger));
 const token = localStorage.token;
-// If there is a token consider the user to be logged in.
-if (token) store.dispatch({ type: AUTH_USER });
+if (token) store.dispatch({ type: AUTH_USER }); // If there is a token consider the user to be logged in.
 
 ReactDom.render(
   <BrowserRouter>
     <Provider store={store}>
-      <Route component={App} />
+      <Route path='/' component={App} />
     </Provider>
   </BrowserRouter>,
   document.querySelector('#root')

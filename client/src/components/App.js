@@ -15,9 +15,6 @@ import Login from './Login';
 import RequireAuth from './RequireAuth';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getUser();
-  }
 
   render() {
     return (
@@ -36,7 +33,6 @@ class App extends Component {
 };
 
 function mapStateToProps(state) {
-  console.log("APP STATE", state);
   return { authenticated: state.auth.authenticated };
 }
 

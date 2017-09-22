@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ENTITIES } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ENTITIES, LOGOUT_ENTITIES } from './types';
 
 export const socialAuth = (provider, history) => dispatch => {
   window.open(`/auth/${provider}`);
@@ -11,7 +11,8 @@ export const socialAuth = (provider, history) => dispatch => {
 export const getUser = () => dispatch => {
   axios.get('/api/user', { 'headers': { 'authorization': localStorage.token } })
     .then(res => {
-      dispatch({ type: AUTH_USER, payload: res.data })
+      dispatch({ type: AUTH_USER, payload: res.data });
+      dispatch({ type: GET_ENTITIES, payload: res.data.entities });
     })
     .catch(err => {
       dispatch(authError(err));
@@ -50,8 +51,10 @@ export const authError = error => {
 export const logoutUser = (history) => dispatch => {
   axios.get('/api/logout')
     .then(res => {
-      localStorage.removeItem('token');
       dispatch({ type: UNAUTH_USER, payload: null });
+      dispatch({ type: LOGOUT_ENTITIES, payload: null });
+      localStorage.removeItem('token');
+      localStorage.removeItem('state');
       history.push('/');
     })
     .catch(err => {
