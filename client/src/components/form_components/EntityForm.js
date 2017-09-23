@@ -53,7 +53,7 @@ function mapStateToProps(state) {
   return { userID: state.auth.user._id };
 }
 
-EntityForm = connect(null, actions)(withRouter(EntityForm));
+EntityForm = connect(mapStateToProps, actions)(withRouter(EntityForm));
 EntityForm = reduxForm({
  form: 'entityForm'
 })(EntityForm);
