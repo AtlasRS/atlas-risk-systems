@@ -6,3 +6,16 @@ export default function() {
     { entity: "Denver Basecamp", type: "Car Loan", make: "Ford", model: "Excursion", vin: 9245235736102, expires: "Dec 13, 2017", insured: "true" }
   ];
 }
+
+// import { POST_ASSET } from '../actions/types';
+//
+// export default function(state = {}, action) {
+//   switch (action.type) {
+//     case "persist/REHYDRATE":
+//       return { ...state, assets: action.payload.assets }
+//     case POST_ASSET:
+//       return { ...state, assets: action.payload }
+//     default:
+//       return state;
+//   }
+// }
