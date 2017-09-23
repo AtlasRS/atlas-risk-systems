@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 const pwdRules = `*You must provide a valid password \n
                   *contains at least 1 lowercase character \n
