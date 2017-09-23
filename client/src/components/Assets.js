@@ -35,7 +35,7 @@ class Assets extends Component {
   }
 
   render() {
-    if (this.props.assets == '') {
+    if (this.props.assets === '') {
       return (
         <div className='placeholder'>
           <img src={car} alt={"car"} className='placeholder-image'/>
