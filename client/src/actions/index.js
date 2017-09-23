@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ENTITIES, LOGOUT_ENTITIES } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ENTITIES } from './types';
 
 export const socialAuth = (provider, history) => dispatch => {
   window.open(`/auth/${provider}`);
@@ -24,7 +24,7 @@ export const signupUser = ({ first_name, last_name, email, password }, history) 
     .then(res => {
       localStorage.setItem('token', res.data.token);
       dispatch({ type: AUTH_USER, payload: res.data });
-      history.push('/assets');
+      history.push('/entities');
     })
     .catch(err => {
       dispatch(authError(err));
@@ -51,10 +51,8 @@ export const authError = error => {
 export const logoutUser = (history) => dispatch => {
   axios.get('/api/logout')
     .then(res => {
-      dispatch({ type: UNAUTH_USER, payload: null });
-      dispatch({ type: LOGOUT_ENTITIES, payload: null });
+      dispatch({ type: UNAUTH_USER });
       localStorage.removeItem('token');
-      localStorage.removeItem('state');
       history.push('/');
     })
     .catch(err => {
