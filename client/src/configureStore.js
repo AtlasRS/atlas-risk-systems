@@ -1,19 +1,14 @@
-import { createStore, applyMiddleware } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
+import { autoRehydrate, persistStore } from 'redux-persist';
 import reduxThunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { loadState, saveState } from './utils/localStorage';
-import throttle from 'lodash/throttle';
+// import { loadState, saveState } from './utils/localStorage';
+// import throttle from 'lodash/throttle';
 import reducers from './reducers';
 
-const configureStore = () =>  {
-  const persistedState = loadState();
-  const store = createStore(reducers, persistedState, applyMiddleware(reduxThunk, logger));
 
-  store.subscribe(throttle(() => {
-    saveState(store.getState());
-  }, 1000));
+const store = compose(applyMiddleware(reduxThunk, logger), autoRehydrate())(createStore)(reducers);
 
-  return store;
-}
+persistStore(store);
 
-export default configureStore;
+export default store;

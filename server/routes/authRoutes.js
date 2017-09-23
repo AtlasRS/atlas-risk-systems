@@ -22,6 +22,7 @@ module.exports = app => {
   app.get('/auth/linkedin/callback', linkedInAuthCallback, AuthenticationCtrl.login);
   // Get user
   app.get('/api/user', requireAuth, EntityCtrl.getEntities, (req, res) => {
+    console.log(req.entities);
     res.send({ user: req.user, entities: req.entities });
   });
 

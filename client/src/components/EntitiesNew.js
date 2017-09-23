@@ -1,6 +1,5 @@
 import React from 'react';
 import SubheaderEntity from './SubheaderEntity'
-import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import EntityForm from './form_components/EntityForm';

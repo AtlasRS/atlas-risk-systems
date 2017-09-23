@@ -1,10 +1,6 @@
 // Fields component contains logic for rendering single input fields
 import React from 'react';
 
-const style = {
-  color: 'red',
-};
-
 const Entity = ['Denver Basecamp', 'Ski Lodge', 'Eagle Tower']
 
 const City = [

@@ -22,22 +22,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
+const token = localStorage.getItem('token');
 
 export default function(ComposedComponent) {
   class Authentication extends Component {
-    static contextTypes: {
-      router: React.PropTypes.Object
-    }
 
     componentWillMount() {
-      if (!this.props.authenticated) {
+      if (!token) {
         this.props.history.push('/');
       }
     }
 
-    componentWillUpdate(nextProps) {
-      if (!nextProps.authenticated) {
+    componentWillUpdate() {
+      if (!token) {
         this.props.history.push('/');
       }
     }

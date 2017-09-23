@@ -25,7 +25,7 @@ class SignupForm extends Component {
   }
 
   handleFormSubmit({ first_name, last_name, email, password }, history) {
-    this.props.signupUser({ first_name, last_name, email, password }, history);
+    this.props.signupUser({ first_name, last_name, email, password }, this.props.history);
   }
 
   render() {
@@ -53,7 +53,7 @@ function validate(values) {
   return errors;
 }
 
-SignupForm = connect(null, actions)(SignupForm);
+SignupForm = connect(null, actions)(withRouter(SignupForm));
 SignupForm = reduxForm({
  form: 'signupForm',
  validate

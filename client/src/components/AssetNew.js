@@ -1,6 +1,5 @@
 import React from 'react';
 import Subheader from './Subheader'
-import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import AssetForm from './form_components/AssetForm';

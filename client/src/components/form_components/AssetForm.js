@@ -2,10 +2,10 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import { withRouter } from 'react-router-dom';
+import * as actions from '../../actions/assets';
 import FieldsInput from './FieldsInput';
 import FieldsSelect from './FieldsSelect';
-import { withRouter } from 'react-router-dom';
 
 const FIELDS = [
   { component: 'select', label: 'Entity', type: 'text', name: 'entity' },
@@ -28,7 +28,7 @@ class AssetForm extends Component {
   renderFields() {
     return _.map(FIELDS, ({ component, label, type, name }) => {
 
-      if(component == 'input'){
+      if(component === 'input'){
         return <Field key={name} component={FieldsInput} label={label} type={type} name={name} />
       }
       else {
@@ -37,8 +37,9 @@ class AssetForm extends Component {
     })
   }
 
-  handleFormSubmit({ first_name, last_name, email, password }, history) {
-    this.props.signupUser({ first_name, last_name, email, password }, history);
+  handleFormSubmit(values) {
+    console.log("VALUES FROM ASSET FORM", values);
+    this.props.postAsset(values, this.props.history);
   }
 
   render() {
@@ -55,7 +56,11 @@ class AssetForm extends Component {
   }
 }
 
-AssetForm = connect(null, actions)(AssetForm);
+// function mapStateToProps(state) {
+//   return { entityID: this.state.entity._id }
+// }
+
+AssetForm = connect(null, actions)(withRouter(AssetForm));
 AssetForm = reduxForm({
  form: 'assetForm'
 })(AssetForm);
