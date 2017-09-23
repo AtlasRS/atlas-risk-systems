@@ -12,6 +12,7 @@ import EntityNew from './EntitiesNew';
 import Landing from './Landing';
 import Signup from './Signup';
 import Login from './Login';
+// eslint-disable-next-line
 import RequireAuth from './RequireAuth';
 
 class App extends Component {
