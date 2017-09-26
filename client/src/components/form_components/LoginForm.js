@@ -49,6 +49,7 @@ class LoginForm extends Component {
   }
 }
 
+// eslint-disable-next-line
 function validate(values) {
   const errors = {};
 
