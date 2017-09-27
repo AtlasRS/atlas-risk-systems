@@ -11,10 +11,15 @@ exports.getAsset = (req, res, next) => {
 
 // get all assets from entitiy collection via entity id that is ref on asset model
 exports.getAssets = (req, res, next) => {
-  Asset.find({ _entity: { $in: [req.params.id] } }, (err, assets) =>  {
-    if (err) return res.status(404).send({ error: err });
-    res.status(200).json(assets);
-  });
+  let result = [];
+  req.entities.forEach(entity => {
+    Asset.find({ _entity: entity._id }, (err, assets) => {
+      if (err) return res.status(404).send({ error: err });
+      result = [...result, ...assets];
+    })
+  })
+  req.assets = result;
+  next();
 }
 
 exports.postAsset = (req, res, next) => {
