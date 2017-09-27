@@ -8,6 +8,7 @@ const keys = require('./server/config/keys');
 require('./server/models/User');
 require('./server/models/Asset');
 require('./server/models/Entity');
+require('./server/models/VerificationToken');
 require('./server/services/passport');
 
 mongoose.connect(keys.mongoURI);
