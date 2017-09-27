@@ -93,7 +93,7 @@ passport.use(new LocalStrategy(localOptions, function(email, password, done) {
     // compare passwords - is 'password' equal to user.password
     user.comparePassword(password, function(err, isMatch) {
       if (err) return done(err);
-      if (!isMatch) return done(null, false);
+      if (!isMatch && !user.isVerified) return done(null, false);
       return done(null, user);
     });
   });

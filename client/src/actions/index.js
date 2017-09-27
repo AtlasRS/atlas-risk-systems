@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ENTITIES } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ENTITIES, GET_ASSETS } from './types';
 
 export const socialAuth = (provider, history) => dispatch => {
   window.open(`/auth/${provider}`);
@@ -37,6 +37,7 @@ export const loginUser = ({ email, password }, history) => dispatch => {
       localStorage.setItem('token', res.data.token);
       dispatch({ type: AUTH_USER, payload: res.data.user });
       dispatch({ type: GET_ENTITIES, payload: res.data.entities });
+      dispatch({ type: GET_ASSETS, payload: res.data.assets });
       history.push('/entities');
     })
     .catch(() => {
