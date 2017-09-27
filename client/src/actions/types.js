@@ -6,4 +6,4 @@ export const GET_ENTITY = 'get-entity';
 export const GET_ENTITIES = 'get-entities';
 export const POST_ENTITY = 'post-entity';
 // Asset Action Types
-export const POST_ASSET = 'post-asset';
+export const GET_ASSETS = 'get-assets';
