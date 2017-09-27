@@ -8,7 +8,8 @@ const userSchema = new Schema({
   first_name: String,
   last_name: String,
   email: { type: String, unique: true, lowercase: true },
-  password: String
+  password: String,
+  isVerified: { type: Boolean, default: false }
   // sharedEntities: [{entity: "name", role: "role"}, {entity: "name", role: "role"}, {entity: "name", role: "role"}]
 });
 
