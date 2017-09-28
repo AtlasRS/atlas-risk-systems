@@ -12,7 +12,6 @@ function tokenForUser(user) {
 }
 
 exports.login = (req, res, next) => {
-  console.log("INSIDE LOGIN", req.assets);
   res.send({ user: req.user, token: tokenForUser(req.user), entities: req.entities, assets: req.assets });
   // res.render('authenticated.html', { token: tokenForUser(req.user) });
   // res.redirect(`/assets?token=${tokenForUser(req.user)}`);
