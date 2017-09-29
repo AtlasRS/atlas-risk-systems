@@ -7,7 +7,8 @@ export default function(state = {}, action) {
     case GET_ENTITIES:
       return { ...state, entities: action.payload }
     case POST_ENTITY:
-      return { ...state, entities: action.payload }
+    const entitiesCopy = [...state.entities, action.payload]
+      return { ...state, entities: entitiesCopy }
     case PURGE_ENTITIES:
       return { entities: {} }
     default:
