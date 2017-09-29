@@ -2,7 +2,8 @@
 export const AUTH_USER = 'auth-user';
 export const UNAUTH_USER = 'unauth-user';
 export const AUTH_ERROR = 'auth-error';
-export const CONFIRM_ACCOUNT = 'confirm_account';
+export const NOT_CONFIRM = 'not_confirm';
+export const IS_CONFIRM = 'is_confirm';
 // Entity Action Types
 export const GET_ENTITY = 'get-entity';
 export const GET_ENTITIES = 'get-entities';
