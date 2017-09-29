@@ -10,15 +10,12 @@ exports.getAsset = (req, res, next) => {
 }
 
 // get all assets from entitiy collection via entity id that is ref on asset model
-exports.getAssets = (req, res, next) => {
-  let result = [];
-  req.entities.forEach(entity => {
-    Asset.find({ _entity: entity._id }, (err, assets) => {
-      if (err) return res.status(404).send({ error: err });
-      result = [...result, ...assets];
-    })
-  })
-  req.assets = result;
+exports.getAssets = async (req, res, next) => {
+  const assetsArr = await Promise.all(req.entities.map(async entity => {
+    const assets = await Asset.find({ _entity: entity._id })
+    return assets;
+  }))
+  req.assets = assetsArr;
   next();
 }
 

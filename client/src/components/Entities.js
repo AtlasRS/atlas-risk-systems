@@ -26,7 +26,7 @@ class Entities extends Component {
   }
 
   render() {
-    if (this.props.entities === '') {
+    if (this.props.entities.length === 0) {
       return (
         <div className='placeholder'>
           <img src={entity} alt={"entity"} className='placeholder-image'/>

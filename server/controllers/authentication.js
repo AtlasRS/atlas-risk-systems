@@ -12,10 +12,7 @@ function tokenForUser(user) {
 }
 
 exports.login = (req, res, next) => {
-  console.log("INSIDE LOGIN", req.assets);
   res.send({ user: req.user, token: tokenForUser(req.user), entities: req.entities, assets: req.assets });
-  // res.render('authenticated.html', { token: tokenForUser(req.user) });
-  // res.redirect(`/assets?token=${tokenForUser(req.user)}`);
 }
 
 
@@ -36,11 +33,11 @@ exports.signup = (req, res, next) => {
       token.save(err => {
         if (err) { return res.status(500).send({ msg: err.message }); }
         // Send the email
-        const transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: keys.sendGridUsername, pass: keys.sendGridKey } });
-        const mailOptions = { from: 'no-reply@atlasrs.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+        const transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: keys.sendGridUsername, pass: keys.sendGridPassword } });
+        const mailOptions = { from: 'no-reply@atlasrs.com', to: user.email, subject: 'Account Verification', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirm\/account\/' + token.token + '.\n' };
         transporter.sendMail(mailOptions, err => {
             if (err) { return res.status(500).send({ msg: err.message }); }
-            res.status(200).send('A verification email has been sent to ' + user.email + '.');
+            res.status(200).send({ msg: 'A verification email has been sent to ' + user.email + '.' });
         });
       });
       // return res.status(200).json({ token: tokenForUser(user) });

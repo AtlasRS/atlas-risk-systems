@@ -15,6 +15,7 @@ import Landing from './Landing';
 import Signup from './Signup';
 import Login from './Login';
 import Loading from './Loading';
+import Confirm from './Confirm';
 // eslint-disable-next-line
 import RequireAuth from './RequireAuth';
 
@@ -49,6 +50,8 @@ class App extends Component {
         <Route exact path='/entities/new' component={EntityNew} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/login' component={Login} />
+        <Route exact path='/confirm/account/' component={Confirm} />
+        <Route path='/confirm/account/:token' component={Confirm} />
       </div>
     );
   }
