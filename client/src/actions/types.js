@@ -11,4 +11,5 @@ export const POST_ENTITY = 'post-entity';
 export const PURGE_ENTITIES = 'purge-entities';
 // Asset Action Types
 export const GET_ASSETS = 'get-assets';
+export const POST_ASSET = 'post-asset'; 
 export const PURGE_ASSETS = 'purge-assets';
