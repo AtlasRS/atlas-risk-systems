@@ -7,9 +7,18 @@ class Assets extends Component {
   renderAssetList() {
     return this.props.assets.map(asset => {
       return (
-        <tr key={asset.vin}>
+        <tr key={asset.vin_number}>
           <td>
-            {asset.entity}
+            {this.props.entity}
+          </td>
+          <td>
+            {asset.asset_name}
+          </td>
+          <td>
+            {asset.asset_description}
+          </td>
+          <td>
+            {asset.address_1}
           </td>
           <td>
             {asset.type}
@@ -18,7 +27,7 @@ class Assets extends Component {
             {asset.make} {asset.model}
           </td>
           <td>
-            {asset.vin}
+            {asset.vin_number}
           </td>
           <td>
             {asset.expires}
@@ -35,7 +44,7 @@ class Assets extends Component {
   }
 
   render() {
-    if (this.props.assets === '') {
+    if (this.props.assets.length === 0) {
       return (
         <div className='placeholder'>
           <img src={car} alt={"car"} className='placeholder-image'/>
@@ -63,7 +72,10 @@ class Assets extends Component {
           <table className="table table-striped m-t-1">
             <thead>
               <tr>
-                <th>Location/Entity</th>
+                <th>Entity</th>
+                <th>Name</th>
+                <th>Discription</th>
+                <th>Location</th>
                 <th>Type</th>
                 <th>Make/Model</th>
                 <th>VIN</th>
@@ -84,7 +96,7 @@ class Assets extends Component {
 
 function mapStateToProps(state) {
   return {
-    assets: state.assets
+    assets: state.assets.assets
   };
 }
 
