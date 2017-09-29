@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ENTITIES, GET_ASSETS } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ENTITIES, GET_ASSETS, PURGE_ASSETS, PURGE_ENTITIES } from './types';
 
 export const socialAuth = (provider, history) => dispatch => {
   window.open(`/auth/${provider}`);
@@ -53,6 +53,8 @@ export const logoutUser = (history) => dispatch => {
   axios.get('/api/logout')
     .then(res => {
       dispatch({ type: UNAUTH_USER });
+      dispatch({ type: PURGE_ASSETS });
+      dispatch({ type: PURGE_ENTITIES });
       localStorage.removeItem('token');
       history.push('/');
     })
