@@ -1,18 +1,17 @@
-// export default function() {
-//   return [
-//     { entity: "Denver Basecamp", type: "Car Loan", make: "Ford", model: "Bronco", vin: 49281736102, expires: "Dec 21, 2017", insured: "true" },
-//     { entity: "Ski Lodge", type: "Car Loan", make: "Ford", model: "Raptor", vin: 23451736102, expires: "Dec 31, 2017", insured: "true" },
-//     { entity: "Eagle Tower", type: "Car Loan", make: "Ford", model: "Explorer", vin: 49282345236, expires: "Dec 1, 2017", insured: "true" },
-//     { entity: "Denver Basecamp", type: "Car Loan", make: "Ford", model: "Excursion", vin: 9245235736102, expires: "Dec 13, 2017", insured: "true" }
-//   ];
-// }
-
-import { GET_ASSETS } from '../actions/types';
+import { GET_ASSETS, PURGE_ASSETS } from '../actions/types';
 
 export default function(state = {}, action) {
   switch (action.type) {
     case GET_ASSETS:
-      return { ...state, assets: action.payload }
+      const assets = action.payload.reduce((arr, assetArr) => {
+        assetArr.forEach(asset => {
+          arr.push(asset);
+        });
+        return arr;
+      }, []);
+      return { ...state, assets: assets }
+    case PURGE_ASSETS:
+      return { assets: {} }
     default:
       return state;
   }
