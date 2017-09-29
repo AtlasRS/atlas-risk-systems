@@ -11,7 +11,7 @@ class Header extends Component {
   }
 
   renderNavBar() {
-    if (this.props.authenticated) {
+    if (this.props.authenticated && this.props.confirmed) {
       return [
         <li key={0}>
           <Link to='/entities'>My Entities</Link>
@@ -54,6 +54,9 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-  return { authenticated: state.auth.authenticated };
+  return {
+    authenticated: state.auth.authenticated,
+    confirmed: state.auth.confirm
+  };
 }
 export default connect(mapStateToProps, actions)(withRouter(Header));

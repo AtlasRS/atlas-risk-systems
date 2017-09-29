@@ -7,7 +7,8 @@ import {
   GET_ASSETS,
   PURGE_ASSETS,
   PURGE_ENTITIES,
-  CONFIRM_ACCOUNT
+  NOT_CONFIRM,
+  IS_CONFIRM
 } from './types';
 
 export const socialAuth = (provider, history) => dispatch => {
@@ -31,7 +32,7 @@ export const getUser = () => dispatch => {
 export const signupUser = ({ first_name, last_name, email, password }, history) => dispatch => {
   axios.post('/api/signup', { first_name, last_name, email, password })
     .then(res => {
-      dispatch({ type: CONFIRM_ACCOUNT, payload: res.data.msg });
+      dispatch({ type: NOT_CONFIRM, payload: res.data.msg });
       history.push('/confirm/account');
     })
     .catch(err => {
@@ -46,6 +47,7 @@ export const loginUser = ({ email, password }, history) => dispatch => {
       dispatch({ type: AUTH_USER, payload: res.data.user });
       dispatch({ type: GET_ENTITIES, payload: res.data.entities });
       dispatch({ type: GET_ASSETS, payload: res.data.assets });
+      dispatch({ type: IS_CONFIRM });
       history.push('/entities');
     })
     .catch(() => {
