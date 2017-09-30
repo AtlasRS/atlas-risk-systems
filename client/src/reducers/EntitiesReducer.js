@@ -1,4 +1,4 @@
-import { GET_ENTITY, GET_ENTITIES, POST_ENTITY, PURGE_ENTITIES } from '../actions/types';
+import { GET_ENTITY, GET_ENTITIES, POST_ENTITY, PURGE_ENTITIES, DISPLAY_ENTITY_ASSETS } from '../actions/types';
 
 export default function(state = {}, action) {
   switch (action.type) {
@@ -9,6 +9,13 @@ export default function(state = {}, action) {
     case POST_ENTITY:
     const entitiesCopy = [...state.entities, action.payload]
       return { ...state, entities: entitiesCopy }
+    case DISPLAY_ENTITY_ASSETS:
+      const id = action.payload.entity_id;
+      const assets = action.payload.assets;
+      const entityAssets = assets.filter(asset => {
+        if (asset._entity === id) return asset;
+      });
+      return { ...state, entity_assets: entityAssets }
     case PURGE_ENTITIES:
       return { entities: {} }
     default:
