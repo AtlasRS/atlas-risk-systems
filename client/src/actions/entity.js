@@ -38,7 +38,7 @@ export const postEntity = (values, id, history) => dispatch => {
     })
 };
 
-export const displayEntityAssets = (entity_id, assets, history) => dispatch => {
-  dispatch({ type: DISPLAY_ENTITY_ASSETS, payload: { entity_id, assets } });
+export const displayEntityAssets = (entity_id, entity_name, assets, history) => dispatch => {
+  dispatch({ type: DISPLAY_ENTITY_ASSETS, payload: { entity_id, entity_name, assets } });
   history.push(`/entity/assets/:${entity_id}`)
 }
