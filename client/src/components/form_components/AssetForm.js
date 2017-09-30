@@ -27,6 +27,7 @@ const FIELDS = [
 ];
 
 class AssetForm extends Component {
+
   renderFields() {
     return _.map(FIELDS, ({ component, label, type, name }) => {
 
@@ -40,7 +41,8 @@ class AssetForm extends Component {
   }
 
   handleFormSubmit = (values) => {
-    this.props.postAsset(values, this.props.history);
+    values._entity = this.props.entityID;
+    this.props.postAsset(values, this.props.entityID, this.props.history);
   }
 
   render() {
@@ -58,7 +60,11 @@ class AssetForm extends Component {
 }
 
 function mapStateToProps(state) {
-  return { entities: state.entities.entities }
+  return {
+    entities: state.entities.entities,
+    entityName: state.entities.current_entity.entity_name,
+    entityID: state.entities.current_entity.id
+  }
 }
 
 AssetForm = connect(mapStateToProps, actions)(withRouter(AssetForm));
