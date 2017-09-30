@@ -11,6 +11,7 @@ import Assets from './Assets';
 import AssetNew from './AssetNew';
 import Entities from './Entities';
 import EntityNew from './EntitiesNew';
+import EntityAssets from './EntityAssets';
 import Landing from './Landing';
 import Signup from './Signup';
 import Login from './Login';
@@ -48,6 +49,8 @@ class App extends Component {
         <Route exact path='/assets/new' component={AssetNew} />
         <Route exact path='/entities' component={Entities} />
         <Route exact path='/entities/new' component={EntityNew} />
+        <Route exact path='/entity/assets/:entity_id' component={EntityAssets} />
+        <Route exact path='/entity/assets/new/:entity_id' component={AssetNew} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/confirm/account/' component={Confirm} />

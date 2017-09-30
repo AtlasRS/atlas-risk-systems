@@ -10,7 +10,7 @@ class AssetNew extends React.Component {
 
     return (
       <div>
-        <Subheader />
+        <Subheader entityName={this.props.entityName} entityID={this.props.entityID} />
         <div className='container m-t-2'>
           <div className='card'>
             <AssetForm />
@@ -21,4 +21,11 @@ class AssetNew extends React.Component {
   }
 }
 
-export default connect(null, actions)(AssetNew);
+function mapStateToProps(state) {
+  return {
+    entityName: state.entities.current_entity.entity_name,
+    entityID: state.entities.current_entity.id 
+  }
+}
+
+export default connect(mapStateToProps, actions)(AssetNew);

@@ -1,4 +1,4 @@
-import { GET_ASSETS, PURGE_ASSETS } from '../actions/types';
+import { GET_ASSETS, POST_ASSET, PURGE_ASSETS } from '../actions/types';
 
 export default function(state = {}, action) {
   switch (action.type) {
@@ -10,6 +10,9 @@ export default function(state = {}, action) {
         return arr;
       }, []);
       return { ...state, assets: assets }
+    case POST_ASSET:
+      const assetsCopy = [...state.assets, action.payload]
+      return { ...state, assets: assetsCopy }
     case PURGE_ASSETS:
       return { assets: {} }
     default:

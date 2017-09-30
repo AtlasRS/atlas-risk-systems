@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Subheader = () => {
+const Subheader = (props) => {
   return (
     <div className='subheader'>
-      <a href='/assets' className=''>
-        My Assets
-      </a> / Add Asset
+      <Link to={`/entity/assets/:${props.entityID}`} className=''>
+        {props.entityName}
+      </Link> / Add Asset
     </div>
   );
 }

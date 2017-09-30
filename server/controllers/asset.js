@@ -20,10 +20,9 @@ exports.getAssets = async (req, res, next) => {
 }
 
 exports.postAsset = (req, res, next) => {
-  Asset.findOne({ asset_name: req.body.asset_name }, (err, existingAsset) => {
+  Asset.findOne({ vin_number: req.body.vin_number }, (err, existingAsset) => {
     if (err) return next(err);
     if (existingAsset) return res.status(422).send({ error: 'Asset already exists' });
-
     Asset.create(req.body, (err, asset) => {
       if (err) return res.status(418).send({ error: err });
       return res.status(200).json(asset);

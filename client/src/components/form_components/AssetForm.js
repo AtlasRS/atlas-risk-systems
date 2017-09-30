@@ -9,22 +9,25 @@ import FieldsSelect from './FieldsSelect';
 
 const FIELDS = [
   { component: 'select', label: 'Entity', type: 'text', name: 'entity' },
+  { component: 'input', label: 'Name', type: 'text', name: 'asset_name' },
   { component: 'input', label: 'Description', type: 'text', name: 'asset_description' },
   { component: 'input', label: 'Street Address', type: 'text', name: 'address_1' },
   { component: 'input', label: 'Address Continued', type: 'text', name: 'address_2' },
   { component: 'select', label: 'City', type: 'text', name: 'city' },
   { component: 'select', label: 'State', type: 'text', name: 'state' },
   { component: 'input', label: 'Zip/Postal Code', type: 'text', name: 'postal_code' },
-/*  { component: 'select', label: 'Country', type: 'text', name: 'country' },*/
+  { component: 'select', label: 'Country', type: 'text', name: 'country' },
   { component: 'select', label: 'Vehicle Type', type: 'text', name: 'vehicle_type' },
   { component: 'input', label: 'VIN', type: 'text', name: 'vin_number' },
   { component: 'select', label: 'Year', type: 'text', name: 'year' },
   { component: 'select', label: 'Make', type: 'text', name: 'make' },
   { component: 'input', label: 'Model', type: 'text', name: 'model' },
+  { component: 'input', label: 'Gross Weight', type: 'text', name: 'gross_weight' },
   { component: 'select', label: 'Operating Radius (Miles)', type: 'text', name: 'operating_radius' },
 ];
 
 class AssetForm extends Component {
+
   renderFields() {
     return _.map(FIELDS, ({ component, label, type, name }) => {
 
@@ -32,19 +35,19 @@ class AssetForm extends Component {
         return <Field key={name} component={FieldsInput} label={label} type={type} name={name} />
       }
       else {
-        return <Field key={name} component={FieldsSelect} label={label} type={type} name={name} />
+        return <Field key={name} component={FieldsSelect} entities={this.props.entities} label={label} type={type} name={name} />
       }
     })
   }
 
-  handleFormSubmit(values) {
-    console.log("VALUES FROM ASSET FORM", values);
-    this.props.postAsset(values, this.props.history);
+  handleFormSubmit = (values) => {
+    values._entity = this.props.entityID;
+    this.props.postAsset(values, this.props.entityID, this.props.history);
   }
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(this.handleFormSubmit.bind(this))}>
+      <form onSubmit={this.props.handleSubmit(this.handleFormSubmit)}>
         <h1>Add Asset</h1>
         {this.renderFields()}
         <div className='pull-right'>
@@ -56,11 +59,15 @@ class AssetForm extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return { entityID: this.state.entity._id }
-// }
+function mapStateToProps(state) {
+  return {
+    entities: state.entities.entities,
+    entityName: state.entities.current_entity.entity_name,
+    entityID: state.entities.current_entity.id
+  }
+}
 
-AssetForm = connect(null, actions)(withRouter(AssetForm));
+AssetForm = connect(mapStateToProps, actions)(withRouter(AssetForm));
 AssetForm = reduxForm({
  form: 'assetForm'
 })(AssetForm);
