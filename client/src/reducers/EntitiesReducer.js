@@ -16,7 +16,7 @@ export default function(state = {}, action) {
       const entityAssets = assets.filter(asset => {
         if (asset._entity === id) return asset;
       });
-      return { ...state, entity_assets: entityAssets, current_entity: entity_name }
+      return { ...state, entity_assets: entityAssets, current_entity: { entity_name, id } }
     case PURGE_ENTITIES:
       return { entities: {} }
     default:
