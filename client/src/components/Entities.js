@@ -7,17 +7,22 @@ import Ionicon from 'react-ionicons';
 
 
 class Entities extends Component {
+
+  handleOnClick = event => {
+    this.props.displayEntityAssets(event.currentTarget.id, this.props.assets, this.props.history);
+  }
+
   renderEntityList() {
     return this.props.entities.map(entity => {
       return (
-        <tr key={entity.legal_name}>
+        <tr key={entity._id}>
           <td>
             {entity.legal_name}
           </td>
           <td>
             {entity.city}, {entity.state}
           </td>
-          <td>
+          <td id={entity._id} onClick={this.handleOnClick}>
             <Ionicon icon="ion-chevron-right" color="#222" fontSize="10px" className='ion'/>
           </td>
         </tr>
@@ -70,7 +75,10 @@ class Entities extends Component {
 }
 
 function mapStateToProps(state) {
-  return { entities: state.entities.entities };
+  return {
+    entities: state.entities.entities,
+    assets: state.assets.assets
+  };
 }
 
 export default connect(mapStateToProps, actions)(withRouter(Entities));
