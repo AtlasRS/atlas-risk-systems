@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ENTITY, GET_ENTITIES, POST_ENTITY } from './types';
+import { GET_ENTITY, GET_ENTITIES, POST_ENTITY, DISPLAY_ENTITY_ASSETS } from './types';
 
 const token = localStorage.getItem('token');
 // Gets one entity
@@ -37,3 +37,8 @@ export const postEntity = (values, id, history) => dispatch => {
       console.error('not happening', err);
     })
 };
+
+export const displayEntityAssets = (entity_id, assets, history) => dispatch => {
+  dispatch({ type: DISPLAY_ENTITY_ASSETS, payload: { entity_id, assets } });
+  history.push(`/entity/assets/:${entity_id}`)
+}
