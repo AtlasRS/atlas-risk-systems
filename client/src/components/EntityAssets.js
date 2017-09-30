@@ -48,7 +48,7 @@ class EntityAssets extends Component {
           <img src={car} alt={"car"} className='placeholder-image'/>
           <div className="m-t-2">
             <Link to='/assets/new' className='btn primary'>
-              Add Your First Asset
+              Add First Asset to {this.props.entityName}
             </Link>
           </div>
         </div>
@@ -57,7 +57,7 @@ class EntityAssets extends Component {
     return (
       <div className='container'>
         <div className='pull-left'>
-          <h1>Entity Assets</h1>
+          <h1>{this.props.entityName} Assets</h1>
         </div>
         <div className='pull-right'>
           <a href='/assets/new' className='pull-right btn primary'>
@@ -93,7 +93,8 @@ class EntityAssets extends Component {
 
 function mapStateToProps(state) {
   return {
-    entityAssets: state.entities.entity_assets
+    entityAssets: state.entities.entity_assets,
+    entityName: state.entities.current_entity
   };
 }
 
