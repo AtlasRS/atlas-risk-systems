@@ -9,7 +9,8 @@ import Ionicon from 'react-ionicons';
 class Entities extends Component {
 
   handleOnClick = event => {
-    this.props.displayEntityAssets(event.currentTarget.id, this.props.assets, this.props.history);
+    const element = event.currentTarget;
+    this.props.displayEntityAssets(element.id, element.className, this.props.assets, this.props.history);
   }
 
   renderEntityList() {
@@ -22,7 +23,7 @@ class Entities extends Component {
           <td>
             {entity.city}, {entity.state}
           </td>
-          <td id={entity._id} onClick={this.handleOnClick}>
+          <td id={entity._id} className={entity.legal_name} onClick={this.handleOnClick}>
             <Ionicon icon="ion-chevron-right" color="#222" fontSize="10px" className='ion'/>
           </td>
         </tr>
