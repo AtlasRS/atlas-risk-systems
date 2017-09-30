@@ -26,7 +26,7 @@ exports.postEntity = (req, res, next) => {
 
     Entity.create(req.body, (err, entity) => {
       if (err) return res.status(404).send({ error: err });
-      next();
+      return res.status(200).json(entity);
     });
   });
 }
