@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import car from '../images/car.svg';
 import Ionicon from 'react-ionicons';
 
@@ -49,9 +50,9 @@ class Assets extends Component {
         <div className='placeholder'>
           <img src={car} alt={"car"} className='placeholder-image'/>
           <div className="m-t-2">
-            <a href='/assets/new' className='btn primary'>
+            <Link to='/assets/new' className='btn primary'>
               Add Your First Asset
-            </a>
+            </Link>
           </div>
         </div>
       );
@@ -62,9 +63,9 @@ class Assets extends Component {
           <h1>My Assets</h1>
         </div>
         <div className='pull-right'>
-          <a href='/assets/new' className='pull-right btn primary'>
+          <Link to='/assets/new' className='pull-right btn primary'>
             Add New Asset
-          </a>
+          </Link>
         </div>
         <div className='clearfix' />
 
