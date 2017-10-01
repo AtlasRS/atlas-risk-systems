@@ -1,4 +1,4 @@
-import { GET_ENTITY, GET_ENTITIES, POST_ENTITY, PURGE_ENTITIES, DISPLAY_ENTITY_ASSETS } from '../actions/types';
+import { GET_ENTITY, GET_ENTITIES, POST_ENTITY, PURGE_ENTITIES, DISPLAY_ENTITY_ASSETS, CLEAR_CURRENT_ENTITY } from '../actions/types';
 
 export default function(state = {}, action) {
   switch (action.type) {
@@ -16,7 +16,9 @@ export default function(state = {}, action) {
       const entityAssets = assets.filter(asset => {
         if (asset._entity === id) return asset;
       });
-      return { ...state, entity_assets: entityAssets, current_entity: { entity_name, id } }
+      return { ...state, entity_assets: entityAssets, current_entity: { entity_name, id }, myAssets: false }
+    case CLEAR_CURRENT_ENTITY:
+      return { ...state, current_entity: { entity_name: undefined , id: undefined }, myAssets: true }
     case PURGE_ENTITIES:
       return { entities: {} }
     default:
