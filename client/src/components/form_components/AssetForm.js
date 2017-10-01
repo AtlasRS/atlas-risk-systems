@@ -41,8 +41,24 @@ class AssetForm extends Component {
   }
 
   handleFormSubmit = (values) => {
-    values._entity = this.props.entityID;
-    this.props.postAsset(values, this.props.entityID, this.props.history);
+    let entityID;
+    let onEntity = false;
+    if (this.props.myAssets === true) {
+      entityID = this.props.entitiesIDList.filter(currEntity => {
+        if (values.entity === currEntity.name){
+          return currEntity.id;
+        }
+      })
+      values._entity = entityID[0].id;
+      values.entity_name = entityID[0].name;
+    }
+    else {
+      onEntity = true;
+      values._entity = this.props.entityID;
+      values.entity_name = this.props.entityName;
+      entityID = this.props.entityID
+    }
+    this.props.postAsset(values, entityID, onEntity, this.props.history);
   }
 
   render() {
@@ -63,7 +79,9 @@ function mapStateToProps(state) {
   return {
     entities: state.entities.entities,
     entityName: state.entities.current_entity.entity_name,
-    entityID: state.entities.current_entity.id
+    entityID: state.entities.current_entity.id,
+    entitiesIDList: state.entities.entitiesID,
+    myAssets: state.entities.myAssets
   }
 }
 
