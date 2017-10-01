@@ -5,7 +5,13 @@ export default function(state = {}, action) {
     case GET_ENTITY:
       return { ...state, entity: action.payload }
     case GET_ENTITIES:
-      return { ...state, entities: action.payload }
+      const entitiesID = action.payload.map(entity => {
+        return {
+          name: entity.legal_name,
+          id: entity._id
+        }
+      });
+      return { ...state, entities: action.payload, entitiesID: entitiesID }
     case POST_ENTITY:
     const entitiesCopy = [...state.entities, action.payload]
       return { ...state, entities: entitiesCopy }
