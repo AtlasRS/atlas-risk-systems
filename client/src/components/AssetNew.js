@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Subheader from './Subheader'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import AssetForm from './form_components/AssetForm';
 
-class AssetNew extends React.Component {
+class AssetNew extends Component {
 
   render() {
 
     return (
       <div>
-        <Subheader entityName={this.props.entityName} entityID={this.props.entityID} />
+        <Subheader entityName={this.props.entityName} entityID={this.props.entityID} myAssets={this.props.myAssets} />
         <div className='container m-t-2'>
           <div className='card'>
             <AssetForm />
@@ -24,7 +24,8 @@ class AssetNew extends React.Component {
 function mapStateToProps(state) {
   return {
     entityName: state.entities.current_entity.entity_name,
-    entityID: state.entities.current_entity.id 
+    entityID: state.entities.current_entity.id,
+    myAssets: state.entities.myAssets
   }
 }
 
