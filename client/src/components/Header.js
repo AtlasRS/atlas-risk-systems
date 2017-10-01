@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../actions';
+import * as entityActions from '../actions/entity';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.svg';
 
 class Header extends Component {
-  handleLogout() {
+  handleLogout = () => {
     this.props.logoutUser(this.props.history);
+  }
+
+  clearCurrentEntity = () => {
+    this.props.clearEntity(this.props.history);
   }
 
   renderNavBar() {
@@ -17,10 +22,10 @@ class Header extends Component {
           <Link to='/entities'>My Entities</Link>
         </li>,
         <li key={1}>
-          <Link to='/assets'>My Assets</Link>
+          <Link onClick={this.clearCurrentEntity} to='/assets'>My Assets</Link>
         </li>,
         <li key={2}>
-          <Link onClick={this.handleLogout.bind(this)} to='/'>Logout</Link>
+          <Link onClick={this.handleLogout} to='/'>Logout</Link>
         </li>
       ];
     } else {
@@ -59,4 +64,4 @@ function mapStateToProps(state) {
     confirmed: state.auth.confirm
   };
 }
-export default connect(mapStateToProps, actions)(withRouter(Header));
+export default connect(mapStateToProps, Object.assign(actions, entityActions))(withRouter(Header));
