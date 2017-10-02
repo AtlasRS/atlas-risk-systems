@@ -5,7 +5,7 @@ import car from '../images/car.svg';
 import Ionicon from 'react-ionicons';
 
 class EntityAssets extends Component {
-  renderAssetList() {
+  renderEntityAssetList() {
     return this.props.entityAssets.map(asset => {
       return (
         <tr key={asset.vin_number}>
@@ -82,7 +82,7 @@ class EntityAssets extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.renderAssetList()}
+              {this.renderEntityAssetList()}
             </tbody>
           </table>
         </div>
