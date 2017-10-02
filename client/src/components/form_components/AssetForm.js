@@ -43,6 +43,7 @@ class AssetForm extends Component {
   handleFormSubmit = (values) => {
     let entityID;
     let onEntity = false;
+    // handle submitting an asset from all assets page.
     if (this.props.myAssets === true) {
       entityID = this.props.entitiesIDList.filter(currEntity => {
         if (values.entity === currEntity.name){
@@ -52,6 +53,7 @@ class AssetForm extends Component {
       values._entity = entityID[0].id;
       values.entity_name = entityID[0].name;
     }
+    // handle submitting an asset from a selected entity.
     else {
       onEntity = true;
       values._entity = this.props.entityID;
