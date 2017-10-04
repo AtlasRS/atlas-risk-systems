@@ -42,6 +42,7 @@ class AssetForm extends Component {
 
   handleFormSubmit = (values) => {
     let entityID;
+    // flag for checking if on current entity/assets or my assets (all assets)
     let onEntity = false;
     // handle submitting an asset from all assets page.
     if (this.props.myAssets === true) {
