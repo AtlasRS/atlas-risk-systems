@@ -10,7 +10,8 @@ class Entities extends Component {
 
   handleOnClick = event => {
     const element = event.currentTarget;
-    this.props.displayEntityAssets(element.id, element.className, this.props.assets, this.props.history);
+    const legalname = element.attributes.getNamedItem('data-legalname').value;
+    this.props.displayEntityAssets(element.id, legalname, this.props.assets, this.props.history);
   }
 
   renderEntityList() {
@@ -23,10 +24,10 @@ class Entities extends Component {
           <td>
             {entity.city}, {entity.state}
           </td>
-          <td id={entity._id} className={entity.legal_name} onClick={this.handleOnClick}>
+          <td id={entity._id} className='td-icon' data-legalname={entity.legal_name} onClick={this.handleOnClick}>
             <Ionicon icon="ion-navicon-round" color="#222" fontSize="15px" className='ion'/>
           </td>
-          <td className='td-icon'>
+          <td className='td-icon icon-plus'>
             <Ionicon icon="ion-plus-round" color="#222" fontSize="15px" className='ion'/>
           </td>
           <td className='td-icon'>

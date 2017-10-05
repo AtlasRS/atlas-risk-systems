@@ -63,9 +63,9 @@ class EntityAssets extends Component {
           <h1>{this.props.entityName} Assets</h1>
         </div>
         <div className='pull-right'>
-          <a href='/assets/new' className='pull-right btn primary'>
+          <Link to='/assets/new' className='pull-right btn primary'>
             Add New Asset
-          </a>
+          </Link>
         </div>
         <div className='clearfix' />
 
