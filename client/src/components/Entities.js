@@ -24,7 +24,16 @@ class Entities extends Component {
             {entity.city}, {entity.state}
           </td>
           <td id={entity._id} className={entity.legal_name} onClick={this.handleOnClick}>
-            <Ionicon icon="ion-chevron-right" color="#222" fontSize="10px" className='ion'/>
+            <Ionicon icon="ion-navicon-round" color="#222" fontSize="15px" className='ion'/>
+          </td>
+          <td className='td-icon'>
+            <Ionicon icon="ion-plus-round" color="#222" fontSize="15px" className='ion'/>
+          </td>
+          <td className='td-icon'>
+            <Ionicon icon="ion-edit" color="#222" fontSize="15px" className='ion'/>
+          </td>
+          <td className='td-icon'>
+            <Ionicon icon="ion-trash-b" color="#222" fontSize="15px" className='ion'/>
           </td>
         </tr>
       );
