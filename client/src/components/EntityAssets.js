@@ -33,10 +33,10 @@ class EntityAssets extends Component {
           <td>
             {asset.insured}
           </td>
-          <td>
+          <td className='td-icon'>
             <Ionicon icon="ion-edit" color="#222" fontSize="15px" className='ion'/>
           </td>
-          <td>
+          <td className='td-icon'>
             <Ionicon icon="ion-trash-b" color="#222" fontSize="15px" className='ion'/>
           </td>
         </tr>
