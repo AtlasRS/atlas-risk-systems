@@ -32,14 +32,14 @@ class Entities extends Component {
   }
 
   render() {
-    if (this.props.entities.length === 0) {
+    if (!this.props.entities || this.props.entities.length === 0) {
       return (
         <div className='placeholder'>
           <img src={entity} alt={"entity"} className='placeholder-image'/>
           <div className="m-t-2">
-            <a href='/entities/new' className='btn primary'>
+            <Link to='/entities/new' className='btn primary'>
               Add Your First Entity
-            </a>
+            </Link>
           </div>
         </div>
       );
