@@ -42,7 +42,7 @@ exports.updateAsset = (req, res, next) => {
 exports.deleteAsset = (req, res, next) => {
   Asset.findByIdAndRemove(req.params.id, (err, deletedAsset) => {
     if (err) return res.status(404).send({ error: err });
-    const response = { message: 'Entry successfully deleted', _id: req.params.id };
+    const response = { message: 'Asset successfully deleted'};
     res.status(200).json(response);
   });
 }
