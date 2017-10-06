@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { POST_ASSET, ADD_NEW_ASSET } from './types';
+import { POST_ASSET, ADD_NEW_ASSET, DELETE_ASSET } from './types';
 
 const token = localStorage.getItem('token');
 
@@ -15,3 +15,14 @@ export const postAsset = (values, entityID, onEntity, history) => dispatch => {
       console.error('not happening', err);
     })
 };
+
+export const deleteAsset = (asset_id, history) => dispatch => {
+  axios.delete(`/api/asset/${asset_id}`, { 'headers': { 'authorization': token } })
+    .then(res => {
+      dispatch({ type: DELETE_ASSET, payload: asset_id });
+      history.push('/assets');
+    })
+    .catch(err => {
+      console.error('Did not delete asset', err);
+    })
+}

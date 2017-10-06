@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import * as actions from '../actions/assets';
 import car from '../images/car.svg';
 import Ionicon from 'react-ionicons';
 
 class Assets extends Component {
+  handleDeleteAsset = event => {
+    const element = event.currentTarget;
+    const assetID = element.attributes.getNamedItem('data-assetID').value;
+    this.props.deleteAsset(assetID, this.props.history);
+  }
+
+
   renderAssetList() {
     return this.props.assets.map(asset => {
       return (
@@ -39,7 +47,7 @@ class Assets extends Component {
           <td className='td-icon'>
             <Ionicon icon="ion-edit" color="#222" fontSize="15px" className='ion'/>
           </td>
-          <td className='td-icon'>
+          <td data-assetID={asset._id} className='td-icon' onClick={this.handleDeleteAsset}>
             <Ionicon icon="ion-trash-b" color="#222" fontSize="15px" className='ion'/>
           </td>
         </tr>
@@ -104,4 +112,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Assets);
+export default connect(mapStateToProps, actions)(withRouter(Assets));
