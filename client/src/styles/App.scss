@@ -334,10 +334,16 @@ select {
   }
 
   .td-icon {
+    width: 1px;
+    cursor: pointer;
     .i {
       font-size: 0.75;
       vertical-align: middle;
     }
+  }
+
+  .icon-plus {
+    padding-right: 25px;
   }
 }
 

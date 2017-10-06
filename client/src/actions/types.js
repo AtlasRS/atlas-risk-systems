@@ -12,6 +12,7 @@ export const PURGE_ENTITIES = 'purge-entities';
 export const DISPLAY_ENTITY_ASSETS = 'display-entity-assets';
 export const CLEAR_CURRENT_ENTITY = 'clear-current-entity';
 export const ADD_NEW_ASSET = 'add-new-asset';
+export const DELETE_ENTITY = 'DELETE_ENTITY';
 // Asset Action Types
 export const GET_ASSETS = 'get-assets';
 export const POST_ASSET = 'post-asset';

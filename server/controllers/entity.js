@@ -43,7 +43,7 @@ exports.updateEntity = (req, res, next) => {
 exports.deleteEntity = (req, res, next) => {
   Entity.findByIdAndRemove(req.params.id, (err, deletedEntity) => {
     if (err) return res.status(404).send({ error: err });
-    const response = { message: 'Entry successfully deleted', _id: req.params.id };
+    const response = { message: 'Entity successfully deleted'};
     res.status(200).json(response);
   });
 }

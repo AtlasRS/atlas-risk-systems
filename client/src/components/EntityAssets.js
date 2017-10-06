@@ -33,8 +33,11 @@ class EntityAssets extends Component {
           <td>
             {asset.insured}
           </td>
-          <td>
-            <Ionicon icon="ion-chevron-right" color="#222" fontSize="10px" className='ion'/>
+          <td className='td-icon'>
+            <Ionicon icon="ion-edit" color="#222" fontSize="15px" className='ion'/>
+          </td>
+          <td className='td-icon'>
+            <Ionicon icon="ion-trash-b" color="#222" fontSize="15px" className='ion'/>
           </td>
         </tr>
       );
@@ -60,9 +63,9 @@ class EntityAssets extends Component {
           <h1>{this.props.entityName} Assets</h1>
         </div>
         <div className='pull-right'>
-          <a href='/assets/new' className='pull-right btn primary'>
+          <Link to='/assets/new' className='pull-right btn primary'>
             Add New Asset
-          </a>
+          </Link>
         </div>
         <div className='clearfix' />
 

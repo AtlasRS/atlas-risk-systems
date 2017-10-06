@@ -36,8 +36,11 @@ class Assets extends Component {
           <td>
             {asset.insured}
           </td>
-          <td>
-            <Ionicon icon="ion-chevron-right" color="#222" fontSize="10px" className='ion'/>
+          <td className='td-icon'>
+            <Ionicon icon="ion-edit" color="#222" fontSize="15px" className='ion'/>
+          </td>
+          <td className='td-icon'>
+            <Ionicon icon="ion-trash-b" color="#222" fontSize="15px" className='ion'/>
           </td>
         </tr>
       );
