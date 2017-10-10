@@ -7,6 +7,7 @@ import * as actions from '../actions';
 import store from '../configureStore';
 
 import Header from './Header';
+import Modal from './Modal';
 import Assets from './Assets';
 import AssetNew from './AssetNew';
 import Entities from './Entities';
@@ -32,6 +33,16 @@ class App extends Component {
     });
   }
 
+  renderModal() {
+    if (this.props.modal) {
+      return(
+        <div>
+          <Modal />
+        </div>
+      )
+    }
+  }
+
   render() {
     if (!this.state.isReady) {
       return(
@@ -44,6 +55,7 @@ class App extends Component {
     return (
       <div>
         <Header />
+        {this.renderModal()}
         <Route exact path='/' component={Landing} />
         <Route exact path='/assets' component={Assets} />
         <Route exact path='/assets/new' component={AssetNew} />
@@ -61,7 +73,10 @@ class App extends Component {
 };
 
 function mapStateToProps(state) {
-  return { authenticated: state.auth.authenticated };
+  return {
+    authenticated: state.auth.authenticated,
+    modal: state.modal.modal_display
+  };
 }
 
 export default connect(mapStateToProps, actions)(withRouter(App));
