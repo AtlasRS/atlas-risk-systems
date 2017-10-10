@@ -19,3 +19,7 @@ export const GET_ASSETS = 'get-assets';
 export const POST_ASSET = 'post-asset';
 export const DELETE_ASSET = 'delete-asset';
 export const PURGE_ASSETS = 'purge-assets';
+// Modal Action Types
+export const ENTITY_MODAL = 'ENTITY_MODAL';
+export const ASSET_MODAL = 'ASSET_MODAL';
+export const REMOVE_MODAL = 'REMOVE_MODAL';

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link, withRouter } from 'react-router-dom';
-import * as actions from '../actions/entity';
+import * as entityActions from '../actions/entity';
+import * as modalActions from '../actions/modal';
 import entity from '../images/entity.svg';
 import Ionicon from 'react-ionicons';
 
@@ -12,6 +13,14 @@ class Entities extends Component {
     const element = event.currentTarget;
     const legalname = element.attributes.getNamedItem('data-legalname').value;
     this.props.displayEntityAssets(element.id, legalname, this.props.assets, this.props.history);
+  }
+
+  handleEntityModal = event => {
+    const entityID = event.currentTarget.attributes.getNamedItem('data-entityID').value;
+    const entity = this.props.entities.find(entity => {
+      if (entity._id === entityID) return entity;
+    })
+    this.props.entityModal(entity);
   }
 
   handleDeleteEntity = event => {
@@ -36,7 +45,7 @@ class Entities extends Component {
           <td className='td-icon icon-plus' data-entityID={entity._id}>
             <Ionicon icon="ion-plus-round" color="#222" fontSize="15px" className='ion'/>
           </td>
-          <td className='td-icon' data-entityID={entity._id}>
+          <td className='td-icon' data-entityID={entity._id} onClick={this.handleEntityModal}>
             <Ionicon icon="ion-edit" color="#222" fontSize="15px" className='ion'/>
           </td>
           <td className='td-icon' data-entityID={entity._id} onClick={this.handleDeleteEntity}>
@@ -98,4 +107,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, actions)(withRouter(Entities));
+export default connect(mapStateToProps, Object.assign(entityActions, modalActions))(withRouter(Entities));
