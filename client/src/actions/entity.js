@@ -1,5 +1,13 @@
 import axios from 'axios';
-import { GET_ENTITY, GET_ENTITIES, POST_ENTITY, DISPLAY_ENTITY_ASSETS, CLEAR_CURRENT_ENTITY, DELETE_ENTITY } from './types';
+import {
+  GET_ENTITY,
+  GET_ENTITIES,
+  POST_ENTITY,
+  DISPLAY_ENTITY_ASSETS,
+  CLEAR_CURRENT_ENTITY,
+  DELETE_ENTITY,
+  REMOVE_MODAL
+} from './types';
 
 const token = localStorage.getItem('token');
 // Gets one entity
@@ -57,4 +65,8 @@ export const displayEntityAssets = (entity_id, entity_name, assets, history) => 
 export const clearEntity = (history) => dispatch => {
   dispatch({ type: CLEAR_CURRENT_ENTITY });
   history.push('/assets');
+}
+
+export const updateEntity = () => dispatch => {
+  dispatch({ type: REMOVE_MODAL });
 }
