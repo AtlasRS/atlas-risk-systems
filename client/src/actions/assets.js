@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { POST_ASSET, ADD_NEW_ASSET, DELETE_ASSET } from './types';
+import { POST_ASSET, ADD_NEW_ASSET, DELETE_ASSET, REMOVE_MODAL } from './types';
 
 const token = localStorage.getItem('token');
 
@@ -25,4 +25,8 @@ export const deleteAsset = (asset_id, history) => dispatch => {
     .catch(err => {
       console.error('Did not delete asset', err);
     })
+}
+
+export const updateAsset = () => dispatch => {
+  dispatch({ type: REMOVE_MODAL });
 }
