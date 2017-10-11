@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link, withRouter } from 'react-router-dom';
-import * as actions from '../actions/assets';
+import * as assetActions from '../actions/assets';
+import * as modalActions from '../actions/modal';
 import car from '../images/car.svg';
 import Ionicon from 'react-ionicons';
 
 class Assets extends Component {
+
+  handleAssetModal = event => {
+    const assetID = event.currentTarget.attributes.getNamedItem('data-assetID').value;
+    const asset = this.props.assets.find(asset => {
+      if (asset._id === assetID) return asset;
+    })
+    this.props.assetModal(asset);
+  }
+
+
   handleDeleteAsset = event => {
     const element = event.currentTarget;
     const assetID = element.attributes.getNamedItem('data-assetID').value;
@@ -44,8 +55,8 @@ class Assets extends Component {
           <td>
             {asset.insured}
           </td>
-          <td className='td-icon'>
-            <Ionicon icon="ion-edit" color="#222" fontSize="15px" className='ion'/>
+          <td data-assetID={asset._id} className='td-icon' onClick={this.handleAssetModal}>
+            <Ionicon icon="ion-edit" color="#222" fontSize="15px" className='ion' />
           </td>
           <td data-assetID={asset._id} className='td-icon' onClick={this.handleDeleteAsset}>
             <Ionicon icon="ion-trash-b" color="#222" fontSize="15px" className='ion'/>
@@ -112,4 +123,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, actions)(withRouter(Assets));
+export default connect(mapStateToProps, Object.assign(assetActions, modalActions))(withRouter(Assets));
